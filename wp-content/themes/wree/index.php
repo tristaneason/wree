@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <?php include 'components/head.php'; ?>
-    <body <?php body_class(); ?>>
+<?php get_header(); ?>
+
+<main id="index">
+    <section class="container grid fourths">
         <?php
-        include 'components/header.php';
-
-        if (is_front_page())
-            include 'templates/home.php';
-        elseif (if_home())
-            include 'layouts/blog.php';
-        elseif (is_single())
-            include 'layouts/article.php';
-        elseif (is_page())
-            include 'layouts/default.php';
-        elseif (is_author())
-            include 'layouts/author.php';
-        elseif (is_category())
-            include 'layouts/category.php';
-        elseif (is_tag())
-            include 'layouts/tag.php';
-        else
-            include 'layouts/default.php';
-
-        include 'components/footer.php';
-        wp_footer();
+        while (have_posts()) {
+            the_post();
+            include __DIR__ . '/components/card.php';
+        }
         ?>
-    </body>
-</html>
+    </section>
+</main>
+
+<?php get_footer(); ?>

@@ -3,5 +3,7 @@
 ?>
 
 <div id="logo">
-    <img src="/images/logo.png" alt="WREE Logo">
+    <a href="/">
+        <img src="<?= get_template_directory_uri() ?>/images/logo.png" alt="WREE Logo">
+    </a>
 </div>
