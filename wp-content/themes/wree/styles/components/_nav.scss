@@ -1,0 +1,30 @@
+#componentNav {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        @media (min-width: $md) {
+            margin: 0 1.5rem 0 0;
+            padding: .5rem 0;
+        }
+        li {
+            &:last-child {
+                &:after {
+                    content: '';
+                }
+            }
+            &:after {
+                @media (min-width: $md) {
+                    content: '|';
+                    color: $light;
+                    padding: 0 .65rem;
+                }
+            }
+            a {
+                color: $light;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+}
