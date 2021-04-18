@@ -1,7 +1,7 @@
 <?php
-// Layout: Default
+// Template Name: Default
 ?>
 
-<main id="layoutDefault">
+<main id="templateDefault">
     <h1><?php the_title(); ?></h1>
 </main>

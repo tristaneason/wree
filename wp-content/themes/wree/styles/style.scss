@@ -1,33 +1,31 @@
 /*! Theme Name: WREE */
 
 // Foundation
-@import 'foundationNormalize';
-@import 'foundationVars';
-@import 'foundationGrid';
-@import 'foundationFlex';
-@import 'foundationGlobals';
+@import 'dependencies/normalize';
+@import 'dependencies/vars';
+@import 'dependencies/grid';
+@import 'dependencies/flex';
+@import 'dependencies/globals';
 
 // Components
-@import 'componentButton';
-@import 'componentCard';
-@import 'componentCtaSection';
-@import 'componentFooter';
-@import 'componentHeader';
-@import 'componentLogo';
-@import 'componentNav';
-@import 'componentRecentArticles';
-@import 'componentSidebar';
+@import 'components/button';
+@import 'components/card';
+@import 'components/ctaSection';
+@import 'components/footer';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/nav';
+@import 'components/recentArticles';
+@import 'components/sidebar';
 
 // Templates
-@import 'templateHome';
-@import 'templateAbout';
-@import 'templateContact';
-@import 'templateFullWidth';
-
-// Layouts
-@import 'layoutArticle';
-@import 'layoutAuthor';
-@import 'layoutBlog';
-@import 'layoutCategory';
-@import 'layoutDefault';
-@import 'layoutTag';
+@import 'templates/about';
+@import 'templates/article';
+@import 'templates/articles';
+@import 'templates/author';
+@import 'templates/category';
+@import 'templates/contact';
+@import 'templates/default';
+@import 'templates/fullWidth';
+@import 'templates/home';
+@import 'templates/tag';

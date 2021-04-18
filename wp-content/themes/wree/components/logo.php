@@ -4,6 +4,6 @@
 
 <div id="logo">
     <a href="/">
-        <img src="<?= get_template_directory_uri() ?>/images/logo.png" alt="WREE Logo">
+        <img src="/wp-content/themes/wree/images/logo-wree-transparent.png" alt="Women for Racial and Economic Equality Logo">
     </a>
 </div>
