@@ -1,0 +1,49 @@
+html,
+body {
+    font-family: $fontBody;
+    font-size: 16px;
+    height: 100%;
+    line-height: 1.75;
+}
+
+a {
+    color: $tertiary;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $dark;
+    font-family: $fontHeading;
+    font-weight: 700;
+}
+
+section[id] {
+
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 0 1rem;
+    @media (min-width: $md) {
+        padding: 0 1.25rem;
+    }
+    @media (min-width: $lg) {
+        padding: 0 1.5rem;
+    }
+    @media (min-width: $xl) {
+        padding: 0 1.875rem
+    }
+    &.full-width {
+        max-width: 100%;
+        width: 100%;
+    }
+    &.no-padding {
+        padding: 0;
+    }
+}

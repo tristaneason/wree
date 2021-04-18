@@ -1,0 +1,286 @@
+.grid {
+    display: grid;
+}
+
+.grid.whole {
+    grid-template-columns: 1fr;
+}
+
+.grid.halves,
+.grid.thirds,
+.grid.fourths,
+.grid.fifths,
+.grid.sixths,
+.grid.one-third,
+.grid.two-thirds,
+.grid.one-fourth,
+.grid.three-fourths,
+.grid.one-fifth,
+.grid.three-fifths,
+.grid.four-fifths,
+.grid.one-sixth,
+.grid.five-sixths {
+    grid-template-columns: 1fr;
+    grid-row-gap: 1rem;
+}
+
+.grid.no-gap {
+    grid-column-gap: 0 !important;
+}
+
+@media (min-width: $md) {
+    .grid.halves {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.5rem;
+    }
+
+    .grid.thirds {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.fourths {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.fifths {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.sixths {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.one-third {
+        grid-template-columns: auto 65%;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.two-thirds {
+        grid-template-columns: 65% auto;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.one-fourth {
+        grid-template-columns: auto 74%;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.three-fourths {
+        grid-template-columns: 74% auto;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.one-fifth {
+        grid-template-columns: auto 79%;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.three-fifths {
+        grid-template-columns: 57% auto;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.four-fifths {
+        grid-template-columns: 79% auto;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.one-sixth {
+        grid-template-columns: auto 84%;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+
+    .grid.five-sixths {
+        grid-template-columns: 84% auto;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+    }
+}
+
+@media (min-width: $lg) {
+    .grid.halves {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.thirds {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.fourths {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.fifths {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.sixths {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.one-third {
+        grid-template-columns: auto 65%;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.two-thirds {
+        grid-template-columns: 65% auto;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.one-fourth {
+        grid-template-columns: auto 74%;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.three-fourths {
+        grid-template-columns: 74% auto;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.one-fifth {
+        grid-template-columns: auto 79%;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.three-fifths {
+        grid-template-columns: 57% auto;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.four-fifths {
+        grid-template-columns: 79% auto;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.one-sixth {
+        grid-template-columns: auto 84%;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+
+    .grid.five-sixths {
+        grid-template-columns: 84% auto;
+        grid-column-gap: 1.65rem;
+        grid-row-gap: 1.65rem;
+    }
+}
+
+@media (min-width: $xl) {
+    .grid.halves {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.thirds {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.fourths {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.fifths {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.sixths {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+    
+    .grid.one-third {
+        grid-template-columns: auto 65%;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.two-thirds {
+        grid-template-columns: 65% auto;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.one-fourth {
+        grid-template-columns: auto 74%;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.three-fourths {
+        grid-template-columns: 74% auto;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.one-fifth {
+        grid-template-columns: auto 79%;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.three-fifths {
+        grid-template-columns: 57% auto;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.four-fifths {
+        grid-template-columns: 79% auto;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.one-sixth {
+        grid-template-columns: auto 84%;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+
+    .grid.five-sixths {
+        grid-template-columns: 84% auto;
+        grid-column-gap: 1.75rem;
+        grid-row-gap: 1.75rem;
+    }
+}
