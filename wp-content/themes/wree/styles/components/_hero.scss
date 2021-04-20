@@ -1,0 +1,28 @@
+#componentHero {
+    background-color: $primary;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(60vh);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    h1 {
+        color: $light;
+    }
+    h2 {
+        color: $light;
+        font-family: $fontBody;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.35;
+        margin-top: .25rem;
+        @media (min-width: $md) {
+            width: 65%;
+        }
+        @media (min-width: $lg) {
+            width: 50%;
+        }
+    }
+    .cta {
+        margin: 1rem 0;
+    }
+}

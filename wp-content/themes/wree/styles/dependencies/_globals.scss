@@ -2,6 +2,7 @@ html,
 body {
     font-family: $fontBody;
     font-size: 16px;
+    font-weight: 400;
     height: 100%;
     line-height: 1.75;
 }
@@ -19,15 +20,26 @@ h5,
 h6 {
     color: $dark;
     font-family: $fontHeading;
-    font-weight: 700;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2.15rem;
+    margin: 1.25rem 0 .75rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin: 1.25rem 0 .7rem;
 }
 
 main[id] {
     margin-top: 55px;
+    position: relative;
 }
 
 section[id] {
-
+    position: relative;
 }
 
 .admin-bar #componentHeader {
@@ -54,4 +66,12 @@ section[id] {
     &.no-padding {
         padding: 0;
     }
+}
+
+.display-none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
 }

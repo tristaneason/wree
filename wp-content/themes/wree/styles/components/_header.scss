@@ -1,6 +1,8 @@
 #componentHeader {
-    background: $primary;
+    background: $light;
+    box-shadow: 0 -2px 5px $medGrey;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 4;
 }

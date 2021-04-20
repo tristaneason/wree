@@ -2,6 +2,12 @@
 // Template Name: Default
 ?>
 
+<?php get_header(); ?>
+
 <main id="templateDefault">
-    <h1><?php the_title(); ?></h1>
+    <div class="container">
+        <h1><?php the_title(); ?></h1>
+    </div>
 </main>
+
+<?php get_footer(); ?>

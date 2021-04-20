@@ -1,3 +1,7 @@
+<?php
+// Layout: Article
+?>
+
 <?php get_header(); ?>
 
 <main id="article">
