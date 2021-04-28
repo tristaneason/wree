@@ -1,10 +1,10 @@
-#logo {
+.logo {
     @media (min-width: $md) {
         padding: .25rem 0;
     }
     a {
         height: auto;
-        max-width: 50px;
+        max-width: 100%;
         img {
             width: 100%;
         }

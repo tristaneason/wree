@@ -2,7 +2,7 @@
 // Component: CTA Section
 ?>
 
-<section class="ctaSection flex align-center justify-center">
-    <h3>Subscribe to our email list</h3>
-    <input type="text" name="" value="">
+<section class="cta-section flex align-center justify-center">
+    <h3><labeL>Subscribe to our email list</label></h3>
+    <?= do_shortcode('[ninja_form id=2]'); ?>
 </section>

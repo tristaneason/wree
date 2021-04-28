@@ -2,7 +2,7 @@
 // Component: Nav
 
 $nav_args = [
-    'menu' => 'Header Nav',
+    'menu' => 'Header Menu',
     'menu_class' => '',
     'menu_id' => 'headerNav',
     'container' => false,

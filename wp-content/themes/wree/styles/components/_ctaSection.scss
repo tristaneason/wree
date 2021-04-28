@@ -1,0 +1,114 @@
+.cta-section {
+    background: $tertiary;
+    padding: 2rem;
+    h3 {
+        color: $light;
+        margin: 1rem;
+        @media (min-width: $md) {
+            margin: 1rem 1rem 1rem 0;
+        }
+    }
+    .mailing-list-input {
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid $light;
+        color: $light;
+        letter-spacing: 1px;
+        outline: 0;
+        text-align: center;
+        width: 100%;
+        @media (min-width: $sm) {
+            width: 75%;
+        }
+        @media (min-width: $md) {
+            width: 19rem;
+        }
+        &:focus {
+            color: $light;
+            text-align: center;
+        }
+    }
+    .mailing-list-submit {
+        @extend .button;
+        @extend .small;
+    }
+
+    // Ninja Forms
+    .nf-before-form-content {
+        display: none;
+    }
+    .nf-form-content {
+        nf-fields-wrap {
+            @extend .flex;
+            @extend .align-center;
+        }
+        input[type="email"] {
+            @extend .mailing-list-input;
+            height: unset;
+            padding: .5rem 0 .25rem;
+            width: 19rem;
+            &:focus {
+                @extend .mailing-list-input;
+                width: 19rem;
+            }
+        }
+        input[type="button"] {
+            @extend .mailing-list-submit;
+            border: 1px solid $light;
+            height: unset;
+        }
+        .nf-field-container {
+            margin-bottom: 0;
+            &.email-container {
+                margin-bottom: 1.5rem;
+                @media (min-width: $md) {
+                    margin-bottom: unset;
+                }
+            }
+            .field-wrap {
+                display: block;
+                &.email-wrap {
+                    @media (min-width: $md) {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+        .nf-error,
+        .nf-pass {
+            .ninja-forms-field {
+                border-color: $light !important;
+            }
+            .nf-field-element {
+                &:after {
+                    background: transparent;
+                    bottom: 1px;
+                    color: $pink;
+                    font-size: 1rem;
+                    height: unset;
+                    line-height: 1.5;
+                    right: unset;
+                    text-align: unset;
+                    top: unset;
+                    width: unset;
+                }
+            }
+            .nf-error-msg {
+                color: pink;
+                font-size: .85rem;
+                position: absolute;
+            }
+        }
+        .nf-after-field {
+            @media (min-width: $md) {
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+    .nf-after-form-content {
+        .nf-form-errors {
+            display: none;
+        }
+    }
+}

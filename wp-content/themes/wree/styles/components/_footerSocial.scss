@@ -1,0 +1,18 @@
+#componentFooterSocial {
+    background: $secondary;
+    padding: 1rem 0;
+    span {
+        display: inline-block;
+        margin-right: 1rem;
+    }
+    #footerSocialLeft {
+
+    }
+    #footerSocialRight {
+        span {
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -5,4 +5,50 @@
     top: 0;
     width: 100%;
     z-index: 4;
+    .logo {
+        a {
+            width: 50px;
+        }
+    }
+    nav {
+        ul {
+            @media (min-width: $md) {
+                margin: 0 1.5rem 0 0;
+            }
+            li {
+                @media (min-width: $md) {
+                    margin-bottom: 0;
+                }
+                &:last-child {
+                    &:after {
+                        content: '';
+                    }
+                }
+                &:after {
+                    @media (min-width: $md) {
+                        content: '|';
+                        color: $lightGrey;
+                        padding: 0 .65rem;
+                    }
+                }
+                a {
+                    font-family: $fontHeading;
+                }
+            }
+        }
+        .search {
+            &:hover {
+                cursor: text;
+            }
+            i {
+                color: $medGrey;
+            }
+            span {
+                font-family: $fontHeading;
+                color: $darkGrey;
+                display: inline-block;
+                margin-right: .1825rem;
+            }
+        }
+    }
 }

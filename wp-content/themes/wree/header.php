@@ -11,7 +11,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header id="componentHeader">
         <div class="container flex align-center space-between">
-            <?php include theme_root('/components/logo'); ?>
-            <?php include theme_root('/components/nav'); ?>
+            <?php include theme_root('/components/logo.php'); ?>
+            <?php include theme_root('/components/nav.php'); ?>
         </div>
     </header>

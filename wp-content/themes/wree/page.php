@@ -1,5 +1,5 @@
 <?php
-// Template Name: Default
+// Template: Default
 ?>
 
 <?php get_header(); ?>

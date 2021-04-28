@@ -4,10 +4,12 @@
 
 <section id="componentHero" class="flex align-center" style="background-image: url('<?php  ?>')">
     <div class="container flex column justify-center">
-        <h1>Women for Racial and Economic Equality</h1>
-        <h2>We are a mass org that supports working class women and families of all races and backgrounds.</h2>
+        <h1><?php the_field('heading'); ?></h1>
+        <h2><?php the_field('subheading'); ?></h2>
         <div class="cta flex">
-            <a href="#" class="button">Call to Action</a>
+            <a href="<?php the_field('cta_url'); ?>" class="button large">
+                <?php the_field('cta_text'); ?>
+            </a>
         </div>
     </div>
 </section>

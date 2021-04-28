@@ -32,5 +32,5 @@ add_action('init', 'remove_editor');
 
 // Use a better function name for theme root
 function theme_root($path) {
-    return get_template_directory() . $path . '.php';
+    return get_template_directory() . $path;
 }
