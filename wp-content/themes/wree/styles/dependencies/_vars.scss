@@ -9,6 +9,11 @@ $darkGrey: #3a3b4b;
 $medGrey: #5c5e7a;
 $lightGrey: #c5c8ea;
 
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+
 $pink: pink;
 
 $sm: 576px;
@@ -17,5 +22,9 @@ $lg: 992px;
 $xl: 1200px;
 $rt: 192dpi;
 
-$fontBody: 'Open Sans', sans-serif;
+$fontBody: 'Roboto', sans-serif;
 $fontHeading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+$textBold: 700;
+
+$shadowSmall: 0 .125rem .25rem rgba(0, 0, 0, .075);

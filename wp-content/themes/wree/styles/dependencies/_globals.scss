@@ -116,6 +116,29 @@ section[id] {
     display: none;
 }
 
+.display-none-mobile {
+    display: none;
+    @media (min-width: $md) {
+        display: unset;
+    }
+}
+
+.font-bold,
+.text-bold {
+    font-weight: 700;
+}
+
 .hidden {
     visibility: hidden;
+}
+
+.hidden-mobile {
+    visibility: hidden;
+    @media (min-width: $md) {
+        visibility: visible;
+    }
+}
+
+.text-center {
+    text-align: center;
 }

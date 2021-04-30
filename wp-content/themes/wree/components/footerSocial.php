@@ -2,7 +2,7 @@
     <div class="container">
         <div class="flex align-center space-between">
             <div id="footerSocialLeft" class="flex align-center">
-                <span>Women for Racial and Economic Equality</span>
+                <span>Women for Racial and Economic Equality, USA</span>
                 <span><a href="/privacy-policy/">Privacy Policy</a></span>
             </div>
             <div id="footerSocialRight" class="flex align-center">

@@ -1,0 +1,31 @@
+.card {
+    background: $light;
+    border: 1px solid $lightGrey;
+    border-radius: .25rem;
+    box-shadow: $shadowSmall;
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    a {
+
+    }
+    .category {
+        font-weight: $textBold;
+    }
+    .title {
+        margin-bottom: 0;
+        margin-top: .5rem;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .date {
+        color: $medGrey;
+        font-size: .85rem;
+    }
+    .thumbnail {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: -1.25rem;
+    }
+}

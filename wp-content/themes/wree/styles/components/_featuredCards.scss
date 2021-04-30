@@ -1,0 +1,13 @@
+#featuredCards {
+    padding: 2rem 0;
+    #featuredPost1 {
+        .category {
+            color: $primary;
+        }
+    }
+    #featuredPost2 {
+        .category {
+            color: $tertiary;
+        }
+    }
+}
