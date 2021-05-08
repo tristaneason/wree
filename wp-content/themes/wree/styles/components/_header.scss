@@ -1,54 +1,61 @@
 #componentHeader {
     background: $light;
     box-shadow: 0 -2px 5px $medGrey;
-    position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 4;
-    .logo {
-        a {
-            width: 50px;
+    ul {
+        list-style: none;
+    }
+}
+
+#headerTop {
+    display: flex;
+    width: 100%;
+    @media (min-width: $lg) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+#headerTopLeft {
+    a {
+        font-family: $fontHeading;
+    }
+    ul {
+        display: flex;
+        padding-left: 0;
+        @media (min-width: $lg) {
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        li {
+            margin-right: 1rem;
+            a {
+                font-size: .85rem;
+            }
         }
     }
-    nav {
-        ul {
-            @media (min-width: $md) {
-                margin: 0 1.5rem 0 0;
-            }
-            li {
-                @media (min-width: $md) {
-                    margin-bottom: 0;
-                }
-                &:last-child {
-                    &:after {
-                        content: '';
-                    }
-                }
-                &:after {
-                    @media (min-width: $md) {
-                        content: '|';
-                        color: $lightGrey;
-                        padding: 0 .65rem;
-                    }
-                }
-                a {
-                    font-family: $fontHeading;
-                }
-            }
+}
+
+#headerTopCenter {
+    margin: 0 auto;
+    .logo a {
+        width: 75px;
+    }
+}
+
+#headerTopRight {
+    .search {
+        color: $medGrey;
+        &:hover {
+            cursor: text;
         }
-        .search {
-            &:hover {
-                cursor: text;
-            }
-            i {
-                color: $medGrey;
-            }
-            span {
-                font-family: $fontHeading;
-                color: $darkGrey;
-                display: inline-block;
-                margin-right: .1825rem;
-            }
-        }
+    }
+}
+
+#headerBottom {
+    @media (min-width: $lg) {
+        border-top: 1px solid $lightGrey;
+        padding: .45rem 0;
     }
 }

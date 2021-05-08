@@ -1,3 +1,9 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
 html,
 body {
     font-family: $fontBody;
@@ -76,7 +82,6 @@ h6,
 }
 
 main[id] {
-    margin-top: 55px;
     position: relative;
 }
 
@@ -123,6 +128,13 @@ section[id] {
     }
 }
 
+.display-none-mobile-lg {
+    display: none;
+    @media (min-width: $lg) {
+        display: unset;
+    }
+}
+
 .font-bold,
 .text-bold {
     font-weight: 700;
@@ -137,6 +149,24 @@ section[id] {
     @media (min-width: $md) {
         visibility: visible;
     }
+}
+
+.hidden-mobile-lg {
+    visibility: hidden;
+    @media (min-width: $lg) {
+        visibility: visible;
+    }
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 .text-center {

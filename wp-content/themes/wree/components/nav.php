@@ -1,10 +1,8 @@
 <?php
 // Component: Nav
 
-$nav_args = [
-    'menu' => 'Header Menu',
-    'menu_class' => '',
-    'menu_id' => 'headerNav',
+$header_cat_args = [
+    'menu' => 'Header Article Categories',
     'container' => false,
     'items_wrap' => '%3$s',
     'depth' => 2,
@@ -12,11 +10,7 @@ $nav_args = [
 ?>
 
 <nav id="componentNav">
-    <ul class="flex space-between align-center">
-        <?php wp_nav_menu($nav_args); ?>
-        <span class="search">
-            <span>Search</span>
-            <i class="fas fa-search"></i>
-        </span>
+    <ul id="navContainer">
+        <?php wp_nav_menu($header_cat_args); ?>
     </ul>
 </nav>

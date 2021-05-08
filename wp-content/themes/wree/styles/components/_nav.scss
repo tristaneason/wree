@@ -1,22 +1,102 @@
-#componentNav,
-nav {
-    ul {
-        list-style: none;
-        margin: 0;
-        padding-left: 0;
-        li {
-            margin-bottom: .5rem;
-            a {
-                color: $dark;
-                padding: .25rem 0;
-                &:hover {
-                    border-bottom: 1px solid $medGrey;
-                }
-                &:active {
-                    color: $primary;
-                    border-bottom: 1px solid $primary;
-                }
-            }
+#componentNav {
+    z-index: 3;
+    @media (min-width: $lg) {
+        display: flex;
+    }
+}
+
+#navContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 0;
+    @media (min-width: $lg) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+#navContainer ul {
+    list-style: none;
+}
+
+#navContainer li {
+    margin-bottom: .5rem;
+    position: relative;
+    @media (min-width: $lg) {
+        margin-bottom: 0;
+    }
+    &:after {
+        @media (min-width: $lg) {
+            content: '';
+            padding: 0 .35rem;
         }
+        @media (min-width: $xl) {
+            content: '|';
+            color: $lightGrey;
+            padding: 0 .65rem;
+        }
+    }
+    &:last-child:after {
+        @media (min-width: $lg) {
+            content: '';
+            padding-right: 0;
+        }
+    }
+}
+
+#navContainer li a {
+    color: $dark;
+    font-family: $fontHeading;
+    @media (min-width: $lg) {
+        padding: .25rem 0;
+    }
+    &:hover {
+        border-bottom: 1px solid $medGrey;
+    }
+    &:active {
+        color: $primary;
+        border-bottom: 1px solid $primary;
+    }
+}
+
+#navContainer li.menu-item-has-children {
+    &:hover {
+        .sub-menu {
+            display: block;
+        }
+    }
+}
+
+#navContainer .sub-menu {
+    @media (min-width: $lg) {
+        background: $light;
+        box-shadow: $shadowLarge;
+        display: none;
+        margin-left: -.5rem;
+        padding: .5rem 0;
+        position: absolute;
+        width: 200px;
+        z-index: 2;
+    }
+    li {
+        padding: .5rem 1rem;
+    }
+    li:after {
+        content: '';
+    }
+}
+
+
+.mobile-nav-icon {
+    @media (min-width: $lg) {
+        display: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    i {
+        font-size: 1.5rem;
     }
 }
