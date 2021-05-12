@@ -23,7 +23,7 @@ $header_static_args = [
             <a href="#" class="button small">Contact</a>
         </div>
     </section>
-    <section id="headerBottom" class="container flex align-center justify-center">
+    <section id="headerBottom" class="container">
         <?php include theme_root('/components/nav.php'); ?>
     </section>
 </header>

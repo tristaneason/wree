@@ -8,12 +8,12 @@
 #navContainer {
     display: flex;
     flex-direction: column;
-    margin: 0;
     padding-left: 0;
     @media (min-width: $lg) {
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
+        margin: 0;
     }
 }
 
@@ -30,7 +30,7 @@
     &:after {
         @media (min-width: $lg) {
             content: '';
-            padding: 0 .35rem;
+            padding: 0 .5rem;
         }
         @media (min-width: $xl) {
             content: '|';

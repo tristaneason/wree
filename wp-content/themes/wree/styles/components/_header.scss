@@ -54,8 +54,12 @@
 }
 
 #headerBottom {
+    display: flex;
+    justify-content: flex-start;
     @media (min-width: $lg) {
+        align-items: center;
         border-top: 1px solid $lightGrey;
+        justify-content: center;
         padding: .45rem 0;
     }
 }
