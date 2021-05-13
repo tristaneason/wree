@@ -86,16 +86,3 @@
         content: '';
     }
 }
-
-
-.mobile-nav-icon {
-    @media (min-width: $lg) {
-        display: none;
-    }
-    &:hover {
-        cursor: pointer;
-    }
-    i {
-        font-size: 1.5rem;
-    }
-}
