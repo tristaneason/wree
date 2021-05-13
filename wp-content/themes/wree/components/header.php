@@ -14,7 +14,10 @@ $header_static_args = [
     <section id="mobileNavIconContainer" class="container hidden-lg-xl">
         <div class="flex persist-row align-center space-between">
             <span id="mobileTitle" class="font-heading">Women for Racial and Economic Equality</span>
-            <span id="mobileNavIcon"><i class="fas fa-bars"></i></span>
+            <span id="mobileNavIcon">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times hidden"></i>
+            </span>
         </div>
     </section>
     <section id="mobileNavContainer" class="container hidden-lg-xl hidden">
