@@ -89,6 +89,7 @@ main[id] {
     }
 }
 .mobile-nav-active {
+    overflow: hidden;
     main[id] {
         padding-top: 0;
     }

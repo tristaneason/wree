@@ -35,9 +35,13 @@
 }
 
 #mobileNavContainer {
-    padding-bottom: 20px;
-    padding-top: 50px;
-    transition: .25s ease;
+    background: $light;
+    height: 100vh;
+    overflow: scroll;
+    padding: 50px 2.25rem 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 4;
     a {
         color: $tertiary !important;
     }
