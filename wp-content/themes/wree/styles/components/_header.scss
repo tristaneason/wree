@@ -28,7 +28,9 @@
         font-size: .85rem;
     }
     #mobileNavIcon {
-        
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
