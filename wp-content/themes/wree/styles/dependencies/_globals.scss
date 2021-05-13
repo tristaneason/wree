@@ -102,6 +102,12 @@ section[id] {
     main[id] {
         padding-top: unset;
     }
+    #wpadminbar {
+        display: none;
+        @media (min-width: 783px) {
+            display: block;
+        }
+    }
 }
 
 .container {

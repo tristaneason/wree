@@ -56,6 +56,16 @@
             display: block;
         }
     }
+    &:last-child {
+        &:hover {
+            .sub-menu {
+                margin-left: -1rem;
+                @media (min-width: $lg) and (max-width: $xl) {
+                    margin-left: -80px;
+                }
+            }
+        }
+    }
 }
 
 #navContainer .sub-menu {
