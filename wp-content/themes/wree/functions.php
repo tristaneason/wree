@@ -34,3 +34,8 @@ add_action('init', 'remove_editor');
 function theme_root($path) {
     return get_template_directory() . $path;
 }
+
+// Disable admin bar on mobile
+if (wp_is_mobile()) {
+    add_filter('show_admin_bar', '__return_false');
+}

@@ -82,16 +82,25 @@ h6,
 }
 
 main[id] {
+    padding-top: 40px;
     position: relative;
+    @media (min-width: $lg) {
+        padding-top: unset;
+    }
+}
+.mobile-nav-active {
+    main[id] {
+        padding-top: 0;
+    }
 }
 
 section[id] {
     position: relative;
 }
 
-.admin-bar #componentHeader {
-    @media (min-width: $sm) {
-        top: 32px;
+.admin-bar {
+    main[id] {
+        padding-top: unset;
     }
 }
 
@@ -117,44 +126,69 @@ section[id] {
     }
 }
 
-.display-none {
-    display: none;
-}
-
-.display-none-mobile {
-    display: none;
-    @media (min-width: $md) {
-        display: unset;
-    }
-}
-
-.display-none-mobile-lg {
-    display: none;
-    @media (min-width: $lg) {
-        display: unset;
-    }
-}
-
 .font-bold,
 .text-bold {
     font-weight: 700;
 }
 
+.font-body {
+    font-family: $fontBody;
+}
+
+.font-heading {
+    font-family: $fontHeading;
+}
+
 .hidden {
+    display: none;
+}
+
+.hidden-lg-xl {
+    @media (min-width: $lg) {
+        display: none;
+    }
+}
+
+.hidden-md-lg-xl {
+    @media (min-width: $md) {
+        display: none;
+    }
+}
+
+.invisible {
     visibility: hidden;
 }
 
-.hidden-mobile {
+.invisible-sm {
     visibility: hidden;
     @media (min-width: $md) {
         visibility: visible;
     }
 }
 
-.hidden-mobile-lg {
+.invisible-sm-md {
     visibility: hidden;
     @media (min-width: $lg) {
         visibility: visible;
+    }
+}
+
+.invisible-sm-md-lg {
+    visibility: hidden;
+    @media (min-width: $lg) {
+        visibility: visible;
+    }
+}
+
+.invisible-lg-xl {
+    @media (min-width: $lg) {
+        visibility: hidden;
+    }
+}
+
+.invisible-md-lg-xl {
+    @media (min-width: $md) {
+        visibility: hidden;
     }
 }
 

@@ -1,7 +1,10 @@
 #componentNav {
+    width: 100%;
     z-index: 3;
     @media (min-width: $lg) {
-        display: flex;
+        border-top: 1px solid $lightGrey;
+        padding-bottom: .5rem;
+        padding-top: .5rem;
     }
 }
 
@@ -27,30 +30,16 @@
     @media (min-width: $lg) {
         margin-bottom: 0;
     }
-    &:after {
-        @media (min-width: $lg) {
-            content: '';
-            padding: 0 .5rem;
-        }
-        @media (min-width: $xl) {
-            content: '|';
-            color: $lightGrey;
-            padding: 0 .65rem;
-        }
-    }
-    &:last-child:after {
-        @media (min-width: $lg) {
-            content: '';
-            padding-right: 0;
-        }
-    }
 }
 
 #navContainer li a {
     color: $dark;
-    font-family: $fontHeading;
     @media (min-width: $lg) {
+        font-size: .95rem;
         padding: .25rem 0;
+    }
+    @media (min-width: $xl) {
+        font-size: 1rem;
     }
     &:hover {
         border-bottom: 1px solid $medGrey;

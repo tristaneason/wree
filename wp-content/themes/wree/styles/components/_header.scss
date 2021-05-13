@@ -2,24 +2,79 @@
     background: $light;
     box-shadow: 0 -2px 5px $medGrey;
     width: 100%;
+    @media (min-width: $lg) {
+        display: block;
+    }
     ul {
         list-style: none;
     }
+    a {
+        font-family: $fontHeading;
+    }
 }
 
-#headerTop {
-    display: flex;
+#mobileNavIconContainer {
+    background: $light;
+    box-shadow: $shadowSmall;
+    min-height: 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    div {
+        min-height: inherit;
+    }
+    #mobileTitle {
+        font-size: .85rem;
+    }
+    #mobileNavIcon {
+
+    }
+}
+
+#mobileNavContainer {
+    padding-top: 50px;
+    transition: .25s ease;
+    a {
+        color: $tertiary !important;
+    }
+    h3 {
+        align-self: flex-start;
+    }
+    .static-nav {
+        padding-left: 0;
+        width: 100%;
+        li {
+            margin-bottom: .5rem;
+        }
+    }
+    #navContainer {
+        margin-bottom: 0;
+    }
+    .sub-menu {
+        padding-left: 1rem;
+        padding-top: .5rem;
+        li {
+            padding: 0 !important;
+            &:before {
+                content: '-';
+                padding-right: .25rem;
+            }
+        }
+    }
+}
+
+#headerTopContainer {
+    display: none;
+    margin-bottom: 1.5rem;
     width: 100%;
     @media (min-width: $lg) {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        margin-bottom: unset;
     }
 }
 
 #headerTopLeft {
-    a {
-        font-family: $fontHeading;
-    }
     ul {
         display: flex;
         padding-left: 0;
@@ -40,11 +95,18 @@
 #headerTopCenter {
     margin: 0 auto;
     .logo a {
-        width: 75px;
+        width: 120px;
+        @media (min-width: $lg) {
+            width: 75px;
+        }
     }
 }
 
 #headerTopRight {
+    justify-content: center;
+    @media (min-width: $lg) {
+        justify-content: flex-end;
+    }
     .search {
         color: $medGrey;
         &:hover {
@@ -53,13 +115,11 @@
     }
 }
 
-#headerBottom {
-    display: flex;
-    justify-content: flex-start;
+#headerBottomContainer {
+    display: none;
     @media (min-width: $lg) {
         align-items: center;
-        border-top: 1px solid $lightGrey;
+        display: flex;
         justify-content: center;
-        padding: .45rem 0;
     }
 }
