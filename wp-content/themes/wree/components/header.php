@@ -22,7 +22,10 @@ $header_static_args = [
     </section>
     <section id="mobileNavContainer" class="container hidden-lg-xl hidden">
         <h3>Main Pages</h3>
-        <ul class="static-nav"><?php wp_nav_menu($header_static_args); ?></ul>
+        <ul class="static-nav">
+            <?php wp_nav_menu($header_static_args); ?>
+            <li><a href="/contact-wree/">Contact</a></li>
+        </ul>
         <h3>Article Categories</h3>
         <?php include theme_root('/components/nav.php'); ?>
     </section>
@@ -37,7 +40,7 @@ $header_static_args = [
             <?php include theme_root('/components/logo.php'); ?>
         </div>
         <div id="headerTopRight" class="flex align-center">
-            <a href="#" class="button small">Contact</a>
+            <a href="/contact-wree/" class="button small">Contact</a>
         </div>
     </section>
     <section id="headerBottomContainer" class="container">
