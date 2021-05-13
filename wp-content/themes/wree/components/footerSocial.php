@@ -5,7 +5,7 @@
                 <span>Women for Racial and Economic Equality, USA</span>
                 <span><a href="/privacy-policy/">Privacy Policy</a></span>
             </div>
-            <div id="footerSocialRight" class="flex align-center">
+            <div id="footerSocialRight" class="flex align-center invisible">
                 <span>
                     <a href="https://www.facebook.com/WREE.USA.Inc/" target="_blank">
                         <i class="fab fa-facebook-square fa-2x"></i>

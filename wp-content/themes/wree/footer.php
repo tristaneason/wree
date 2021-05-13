@@ -42,11 +42,11 @@ $nav_args_2 = [
         </section>
         <section id="footerSection3" class="flex column">
             <h3>Contact Info</h3>
-            <div class="">
+            <div class="flex column">
                 <h4 class="margin-top">Email</h4>
                 <a href="mailto:wreeusa@protonmail.com">wreeusa@protonmail.com</a>
             </div>
-            <div class="">
+            <div class="flex column">
                 <h4>Address</h4>
                 <address>
                     <a href="https://goo.gl/maps/Zc8RtgcKGQ5fNTHy7" target="_blank">
