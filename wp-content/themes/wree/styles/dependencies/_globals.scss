@@ -40,8 +40,16 @@ h6, .h6 {
 
 h1,
 .h1 {
-    font-size: 2.15rem;
+    font-size: 1.75rem;
     margin: 1.25rem 0 .75rem;
+    @media (min-width: $md) {
+        font-size: 2rem;
+        margin: 1.25rem 0 .75rem;
+    }
+    @media (min-width: $lg) {
+        font-size: 2.15rem;
+        margin: 1.25rem 0 .75rem;
+    }
 }
 
 h2,
@@ -67,7 +75,7 @@ h4,
 h5,
 .h5 {
     font-family: $fontBody;
-    font-size: .85rem;
+    font-size: 1rem;
     font-weight: 600;
     margin: 1rem 0 .5rem;
 }
