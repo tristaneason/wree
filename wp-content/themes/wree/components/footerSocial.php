@@ -1,3 +1,7 @@
+<?php
+// Component: Footer Social
+?>
+
 <section id="componentFooterSocial">
     <div class="container">
         <div class="flex align-center space-between">

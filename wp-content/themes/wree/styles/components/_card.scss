@@ -4,6 +4,7 @@
     border-radius: .25rem;
     box-shadow: $shadowSmall;
     margin-bottom: 1rem;
+    overflow: hidden;
     padding: 1.25rem;
     a {
 
@@ -12,8 +13,11 @@
         font-weight: $textBold;
     }
     .title {
-        margin-bottom: 0;
-        margin-top: .5rem;
+        margin: .5rem .5rem .5rem 0;
+        text-align: center;
+        @media (min-width: $md) {
+            text-align: left;
+        }
         &:hover {
             text-decoration: underline;
         }
@@ -22,10 +26,13 @@
         color: $medGrey;
         font-size: .85rem;
     }
+    .excerpt {
+        text-align: center;
+        @media (min-width: $md) {
+            text-align: left;
+        }
+    }
     .thumbnail {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
         margin: -1.25rem;
     }
 }

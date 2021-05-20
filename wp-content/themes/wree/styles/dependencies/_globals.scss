@@ -170,6 +170,23 @@ section[id] {
     }
 }
 
+.hidden-mobile {
+    @media (max-width: $md) {
+        display: none;
+    }
+}
+
+.hidden-tablet {
+    @media (max-width: $lg) {
+        display: none;
+    }
+}
+
+.img-responsive {
+    height: auto;
+    max-width: 100%;
+}
+
 .invisible {
     visibility: hidden;
 }
@@ -220,4 +237,10 @@ section[id] {
 
 .text-center {
     text-align: center;
+}
+
+.thumbnail {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

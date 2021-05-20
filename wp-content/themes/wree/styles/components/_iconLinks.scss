@@ -1,0 +1,38 @@
+#iconLinks {
+    background: $secondary;
+    padding: 3rem 0 2rem;
+    a {
+        @media (max-width: $md) {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+    .thumbnail {
+        border-radius: 1rem;
+        height: 160px;
+        width: 200px;
+        @media (min-width: $sm) {
+            height: 220px;
+            width: 400px;
+        }
+        @media (min-width: $md) {
+            height: 220px;
+            width: unset;
+        }
+        @media (min-width: $lg) {
+            height: 200px;
+        }
+        @media (min-width: $xl) {
+            height: 250px;
+        }
+    }
+    h3 {
+        text-align: center;
+        @media (min-width: $md) {
+            // text-align: left;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
