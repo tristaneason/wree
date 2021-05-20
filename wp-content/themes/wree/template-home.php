@@ -9,13 +9,7 @@
     <?php include theme_root('/components/featuredCards.php'); ?>
     <?php include theme_root('/components/iconLinks.php'); ?>
     <?php include theme_root('/components/ctaSection.php'); ?>
-    <section id="joinWree" class="container">
-        <div class="flex column align-center">
-            <h2><?= get_field('join_wree_heading'); ?></h2>
-            <?= get_field('join_wree_description'); ?>
-            <a href="#" class="button"><?= get_field('join_wree_button_text'); ?></a>
-        </div>
-    </section>
+    <?php include theme_root('/components/joinWree.php'); ?>
     <section id="authors" class="container">
         <h2><?= get_field(''); ?></h2>
         <div class="grid fourths">
