@@ -1,6 +1,12 @@
-#iconLinks {
-    background: $secondary;
+.fourThumbs {
+    background: $light;
     padding: 3rem 0 2rem;
+    &#fourThumbsStatic {
+        background: $secondary;
+    }
+    &#fourThumbsAuthors {
+        padding: 1rem 0 2rem;
+    }
     a {
         @media (max-width: $md) {
             display: flex;
@@ -10,21 +16,26 @@
     .thumbnail {
         border-radius: 1rem;
         height: 160px;
+        margin: 0 auto;
         width: 200px;
         @media (min-width: $sm) {
             height: 220px;
-            width: 400px;
+            width: 300px;
         }
         @media (min-width: $md) {
             height: 220px;
-            width: unset;
+            width: 300px;
         }
         @media (min-width: $lg) {
             height: 200px;
+            width: unset;
         }
         @media (min-width: $xl) {
             height: 250px;
         }
+    }
+    h2 {
+        text-align: center;
     }
     h3 {
         text-align: center;

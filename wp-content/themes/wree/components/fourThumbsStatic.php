@@ -1,8 +1,8 @@
 <?php
-// Component: Icon Links
+// Component: Four Thumbs — Static
 ?>
 
-<section id="iconLinks">
+<section id="fourThumbsStatic" class="fourThumbs">
     <div class="container grid fourths">
         <div class="flex column">
             <a href="<?= get_field('thumbnail_url_1'); ?>">
