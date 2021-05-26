@@ -1,0 +1,8 @@
+#headerBottomContainer {
+    display: none;
+    @media (min-width: $lg) {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+}

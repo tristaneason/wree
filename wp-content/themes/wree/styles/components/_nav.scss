@@ -18,24 +18,22 @@
         justify-content: space-between;
         margin: 0;
     }
-}
-
-#navContainer ul {
-    list-style: none;
-}
-
-#navContainer li {
-    margin-bottom: .5rem;
-    position: relative;
-    @media (min-width: $lg) {
-        margin-bottom: 0;
+    ul {
+        list-style: none;
+        li {
+            margin-bottom: .5rem;
+            position: relative;
+            @media (min-width: $lg) {
+                margin-bottom: 0;
+            }
+        }
     }
 }
 
 #navContainer li a {
     color: $dark;
     @media (min-width: $lg) {
-        font-size: .95rem;
+        font-size: .85rem;
         padding: .25rem 0;
     }
     @media (min-width: $xl) {
@@ -59,7 +57,9 @@
     &:last-child {
         &:hover {
             .sub-menu {
-                margin-left: -1rem;
+                @media (min-width: $lg) {
+                    margin-left: -1rem;
+                }
                 @media (min-width: $lg) and (max-width: $xl) {
                     margin-left: -80px;
                 }
@@ -76,7 +76,7 @@
         margin-left: -.5rem;
         padding: .5rem 0;
         position: absolute;
-        width: 200px;
+        width: 210px;
         z-index: 2;
     }
     li {

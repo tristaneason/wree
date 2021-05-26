@@ -5,7 +5,7 @@ $header_static_args = [
     'menu' => 'Header Static Pages',
     'container' => false,
     'items_wrap' => '%3$s',
-    'depth' => 1,
+    'depth' => 2,
 ];
 ?>
 
@@ -40,6 +40,7 @@ $header_static_args = [
             <?php include theme_root('/components/logo.php'); ?>
         </div>
         <div id="headerTopRight" class="flex align-center">
+            <a href="/events/">Events</a>
             <a href="/contact-wree/" class="button small">Contact</a>
         </div>
     </section>

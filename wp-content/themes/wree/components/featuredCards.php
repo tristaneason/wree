@@ -32,6 +32,9 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
                 </a>
                 <span class="date"><?= $date_1; ?></span>
                 <p class="excerpt"><?= get_the_excerpt($id_1); ?></p>
+                <a href="<?= get_permalink($id_1); ?>">
+                    Continue reading <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
             </div>
             <a href="<?= get_permalink($id_1); ?>" class="thumbnail hidden-tablet"></a>
         </div>
@@ -43,6 +46,9 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
                 </a>
                 <span class="date"><?= $date_2; ?></span>
                 <p class="excerpt"><?= get_the_excerpt($id_2); ?></p>
+                <a href="<?= get_permalink($id_2); ?>">
+                    Continue reading <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
             </div>
             <a href="<?= get_permalink($id_2); ?>" class="thumbnail hidden-tablet"></a>
         </div>

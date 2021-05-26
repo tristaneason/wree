@@ -21,7 +21,7 @@ $featured_date = date('F j, Y', strtotime($featured_post->post_date));
         </a>
         <h2><?= get_the_excerpt($featured_id); ?></h2>
         <a href="<?= get_permalink($featured_id); ?>">
-            <h3 class="cta">Read More</h3>
+            <h3 class="cta">Continue reading</h3>
         </a>
     </div>
 </section>
