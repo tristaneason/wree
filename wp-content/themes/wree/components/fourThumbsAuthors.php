@@ -81,7 +81,7 @@ $authorsPosts = get_posts($authorsArgs);
                             <span class="name">by <a href="<?= get_author_posts_url($authorPost->post_author); ?>">
                                     <?= get_the_author_meta('display_name', $authorPost->post_author); ?></a></span>
                             <p><?= $authorPost->post_excerpt; ?></p>
-                            <a href="<?= get_the_permalink($authorPost->ID); ?>" class="flex">
+                            <a href="<?= get_the_permalink($authorPost->ID); ?>" class="flex align-center">
                                 <span>Continue reading</span> <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
