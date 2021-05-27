@@ -67,9 +67,8 @@
                 text-align: left;
             }
         }
-        img {
-            height: 200px;
-            width: auto;
+        span {
+            display: block;
         }
         .heading-latest {
             margin-bottom: 1rem;
@@ -79,7 +78,7 @@
             }
         }
         .title-excerpt {
-            @min-width:
+            
         }
         .thumbnail {
             border-radius: .25rem;

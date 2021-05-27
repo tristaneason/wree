@@ -77,8 +77,9 @@ $authorsPosts = get_posts($authorsArgs);
                             <a href="<?= get_the_permalink($authorPost->ID); ?>">
                                 <h3><?= $authorPost->post_title; ?></h3>
                             </a>
-                            <span> by
-                                <a href="<?= get_the_author_meta('url', $authorPost->post_author); ?>">
+                            <span class="date"><?= date('F j, Y', strtotime($authorPost->post_date)); ?></span>
+                            <span class="name"> by
+                                <a href="<?= get_author_posts_url($authorPost->post_author); ?>">
                                     <?= get_the_author_meta('display_name', $authorPost->post_author); ?>
                                 </a>
                             </span>
