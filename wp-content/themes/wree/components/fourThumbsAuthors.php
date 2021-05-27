@@ -84,8 +84,8 @@ $authorsPosts = get_posts($authorsArgs);
                                 </a>
                             </span>
                             <p><?= $authorPost->post_excerpt; ?></p>
-                            <a href="<?= get_the_permalink($authorPost->ID); ?>" class="font-heading">
-                                Read more
+                            <a href="<?= get_the_permalink($authorPost->ID); ?>">
+                                Continue reading <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
