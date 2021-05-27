@@ -43,7 +43,11 @@ $nav_args_2 = [
         <section id="footerSection3" class="flex column">
             <h3>Contact Info</h3>
             <div class="flex column">
-                <h4 class="margin-top">Email</h4>
+                <h4 class="margin-top">Phone</h4>
+                <a href="tel:718-979-6563">+1 (718) 979-6563</a>
+            </div>
+            <div class="flex column">
+                <h4>Email</h4>
                 <a href="mailto:wreeusa@protonmail.com">wreeusa@protonmail.com</a>
             </div>
             <div class="flex column">

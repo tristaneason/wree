@@ -48,3 +48,46 @@
         }
     }
 }
+
+#fourThumbsAuthors {
+    .author {
+        .thumbnail {
+
+        }
+    }
+    .authors-posts {
+        h3 {
+            @media (min-width: $md) {
+                text-align: left;
+            }
+        }
+        p {
+            text-align: center;
+            @media (min-width: $md) {
+                text-align: left;
+            }
+        }
+        img {
+            height: 200px;
+            width: auto;
+        }
+        .heading-latest {
+            margin-bottom: 1rem;
+            text-align: center;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        .title-excerpt {
+            @min-width:
+        }
+        .thumbnail {
+            border-radius: .25rem;
+            height: 200px;
+            width: 100%;
+            @media (min-width: $lg) {
+                height: 150px;
+            }
+        }
+    }
+}
