@@ -51,6 +51,9 @@
                 @extend .mailing-list-input;
                 width: 19rem;
             }
+            &::placeholder {
+                color: rgba(255, 255, 255, .35);
+            }
         }
         input[type="button"] {
             @extend .mailing-list-submit;
