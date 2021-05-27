@@ -24,6 +24,9 @@ $header_static_args = [
         <h3>Main Pages</h3>
         <ul class="static-nav">
             <?php wp_nav_menu($header_static_args); ?>
+            <li><a href="/current-actions/">Current Actions</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/events/">Events</a></li>
             <li><a href="/contact-wree/">Contact</a></li>
         </ul>
         <h3>Article Categories</h3>
@@ -41,6 +44,7 @@ $header_static_args = [
         </div>
         <div id="headerTopRight" class="flex align-center">
             <a href="/current-actions/">Current Actions</a>
+            <a href="/articles/">Articles</a>
             <a href="/events/">Events</a>
             <a href="/contact-wree/" class="button small">Contact</a>
         </div>
