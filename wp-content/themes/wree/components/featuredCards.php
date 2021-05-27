@@ -22,7 +22,7 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
     }
 </style>
 
-<section id="featuredCards" class="">
+<section id="featuredCards">
     <div class="container grid halves">
         <div id="featuredPost1" class="card grid two-thirds">
             <div class="flex column">
@@ -54,5 +54,12 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
             </div>
             <a href="<?= get_permalink($id_2); ?>" class="thumbnail hidden-tablet"></a>
         </div>
+    </div>
+    <div class="container">
+        <h2 class="text-center">
+            <a href="/articles/" class="button">
+                See our latest articles <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+        </h2>
     </div>
 </section>
