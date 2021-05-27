@@ -78,14 +78,11 @@ $authorsPosts = get_posts($authorsArgs);
                                 <h3><?= $authorPost->post_title; ?></h3>
                             </a>
                             <span class="date"><?= date('F j, Y', strtotime($authorPost->post_date)); ?></span>
-                            <span class="name"> by
-                                <a href="<?= get_author_posts_url($authorPost->post_author); ?>">
-                                    <?= get_the_author_meta('display_name', $authorPost->post_author); ?>
-                                </a>
-                            </span>
+                            <span class="name">by <a href="<?= get_author_posts_url($authorPost->post_author); ?>">
+                                    <?= get_the_author_meta('display_name', $authorPost->post_author); ?></a></span>
                             <p><?= $authorPost->post_excerpt; ?></p>
-                            <a href="<?= get_the_permalink($authorPost->ID); ?>">
-                                Continue reading <i class="fas fa-long-arrow-alt-right"></i>
+                            <a href="<?= get_the_permalink($authorPost->ID); ?>" class="flex">
+                                <span>Continue reading</span> <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>

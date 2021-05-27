@@ -78,7 +78,12 @@
             }
         }
         .title-excerpt {
-            
+            .date,
+            .name {
+                @media (max-width: $md) {
+                    text-align: center;
+                }
+            }
         }
         .thumbnail {
             border-radius: .25rem;
