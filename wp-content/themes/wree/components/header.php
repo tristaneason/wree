@@ -40,6 +40,7 @@ $header_static_args = [
             <?php include theme_root('/components/logo.php'); ?>
         </div>
         <div id="headerTopRight" class="flex align-center">
+            <a href="/current-actions/">Current Actions</a>
             <a href="/events/">Events</a>
             <a href="/contact-wree/" class="button small">Contact</a>
         </div>
