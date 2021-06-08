@@ -1,13 +1,21 @@
 <?php get_header(); ?>
 
 <main id="index">
-    <section class="container grid fourths">
-        <?php
-        while (have_posts()) {
-            the_post();
-            include __DIR__ . '/components/card.php';
-        }
-        ?>
+    <section class="container grid two-thirds">
+        <article class="">
+            <header class="post-header">
+                <h1><?php the_title(); ?></h1>
+            </header>
+            <div class="">
+
+            </div>
+            <footer class="post-footer">
+
+            </footer>
+        </article>
+        <div class="">
+            <?php include theme_root('/components/sidebar.php'); ?>
+        </div>
     </section>
 </main>
 
