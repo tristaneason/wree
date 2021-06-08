@@ -1,0 +1,12 @@
+.sidebar {
+    border: 1px solid $lightGrey;
+    padding: .5rem 1rem;
+    section {
+        margin-bottom: 2rem;
+        &.meeting-section {
+            h3 {
+                margin-top: 0;
+            }
+        }
+    }
+}

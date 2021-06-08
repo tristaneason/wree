@@ -6,8 +6,19 @@
     margin-bottom: 1rem;
     overflow: hidden;
     padding: 1.25rem;
-    a {
-
+    text-align: center;
+    @media (min-width: $lg) {
+        text-align: left;
+    }
+    .thumbnail {
+        display: block;
+        img {
+            border-radius: 1rem;
+            box-shadow: $shadowSmall;
+            object-fit: cover;
+            height: 150px;
+            width: 100%;
+        }
     }
     .category {
         font-weight: $textBold;
@@ -35,7 +46,7 @@
             text-align: left;
         }
     }
-    .thumbnail {
-        margin: -1.25rem;
+    .continue {
+        display: inline;
     }
 }

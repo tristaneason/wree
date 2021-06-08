@@ -1,0 +1,41 @@
+#componentRecentArticles {
+    padding: 0rem 0 3rem;
+    .article-snippet {
+        border: 1px solid $lightGrey;
+        border-radius: .25rem;
+        box-shadow: $shadowSmall;
+        margin-bottom: 1rem;
+        padding: .75rem;
+        .padding {
+            padding-right: 1rem;
+            @media (min-width: $sm) {
+                width: 70%;
+            }
+            @media (min-width: $lg) {
+                width: unset;
+            }
+        }
+        .thumbnail-link {
+            display: none;
+            height: 100%;
+            @media (min-width: $sm) {
+                display: inline;
+            }
+            @media (min-width: $lg) {
+                height: 150px;
+                width: 180px;
+            }
+        }
+        .thumbnail {
+            border-radius: .5rem;
+            box-shadow: $shadowSmall;
+            height: 100%;
+            object-fit: cover;
+            width: 200px;
+            @media (min-width: $lg) {
+                height: 150px;
+                width: 180px;
+            }
+        }
+    }
+}

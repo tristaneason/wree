@@ -66,7 +66,6 @@ h3,
 
 h4,
 .h4 {
-    font-family: $fontBody;
     font-size: 1.15rem;
     font-weight: 600;
     margin: 1rem 0 .5rem;
@@ -74,7 +73,6 @@ h4,
 
 h5,
 .h5 {
-    font-family: $fontBody;
     font-size: 1rem;
     font-weight: 600;
     margin: 1rem 0 .5rem;
@@ -83,7 +81,6 @@ h5,
 h6,
 .h6 {
     color: $medGrey;
-    font-family: $fontBody;
     font-size: .85rem;
     font-weight: 600;
     margin: 1rem 0 .5rem;
@@ -141,9 +138,17 @@ section[id] {
     }
 }
 
+.d-block {
+    display: block;
+}
+
+.d-inline {
+    display: inline;
+}
+
 .font-bold,
 .text-bold {
-    font-weight: 700;
+    font-weight: $textBold;
 }
 
 .font-body {
@@ -247,8 +252,6 @@ section[id] {
     text-align: right;
 }
 
-.thumbnail {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.text-small {
+    font-size: .85rem;
 }

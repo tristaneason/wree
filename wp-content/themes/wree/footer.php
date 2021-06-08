@@ -44,11 +44,11 @@ $nav_args_2 = [
             <h3>Contact Info</h3>
             <div class="flex column">
                 <h4 class="margin-top">Phone</h4>
-                <a href="tel:718-979-6563">+1 (718) 979-6563</a>
+                <a href="tel:501-492-6720">+1 (501) 492-6720</a>
             </div>
             <div class="flex column">
                 <h4>Email</h4>
-                <a href="mailto:wreeusa@protonmail.com">wreeusa@protonmail.com</a>
+                <a href="mailto:wree-info@usvangaurd.net">wree-info@usvangaurd.net</a>
             </div>
             <div class="flex column">
                 <h4>Address</h4>
