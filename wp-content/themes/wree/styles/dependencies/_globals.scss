@@ -229,6 +229,18 @@ section[id] {
     }
 }
 
+.mt-0 {
+    margin-top: 0;
+}
+
+.mr-05 {
+    margin-right: .5rem;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
 .sr-only {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -253,5 +265,5 @@ section[id] {
 }
 
 .text-small {
-    font-size: .85rem;
+    font-size: .875rem;
 }

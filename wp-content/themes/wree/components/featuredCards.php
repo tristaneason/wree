@@ -18,6 +18,9 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
 </style>
 
 <section id="featuredCards">
+    <div class="container">
+        <h2 class="text-center mt-0">Read Our Latest Articles</h2>
+    </div>
     <div class="container grid halves">
         <div id="featuredPost1" class="card">
             <a href="<?= get_permalink($id_1); ?>" class="thumbnail">

@@ -1,23 +1,63 @@
 #article {
     padding: 3rem 0;
+    .post-container {
+        .post-header {
+            .category {
+                background: $primary;
+                color: $light;
+                font-weight: bold;
+                padding: .25rem .5rem;
+            }
+            .credit {
+                color: $medGrey;
+                font-size: .875rem;
+            }
+            .featured-image {
+                border-radius: 1rem;
+                box-shadow: $shadowSmall;
+                margin-top: 1rem;
+            }
+        }
+        .post-body {
+            font-size: 1.125rem;
+            padding-bottom: 2rem;
+            img {
+                display: block;
+                height: auto;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            .share-icons {
+                color: $medGrey;
+                span,
+                a {
+                    margin-left: .75rem;
+                }
+            }
+        }
+        .post-footer {
+            border-top: 1px solid $lightGrey;
+            padding: 1rem 0;
+            .author-thumb {
+                border-radius: 70px;
+                height: 100px;
+                width: 100px;
+                @media (min-width: $md) {
+                    margin-right: 1rem;
+                }
+            }
+            h5 {
+                margin-top: .25rem;
+            }
+            .author-description {
+                font-size: .875rem;
+                margin: .25rem 0;
+            }
+        }
+    }
     @media (min-width: $md) {
         .post-container {
             padding-right: 1rem;
-            .post-header {
-                .category {
-                    background: $primary;
-                    color: $light;
-                    font-weight: bold;
-                    padding: .25rem .5rem;
-                }
-                img {
-                    border-radius: 1rem;
-                    margin-top: 1rem;
-                }
-            }
-            .post-body {
-                font-size: 1.125rem;
-            }
         }
     }
 }

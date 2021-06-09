@@ -3,6 +3,24 @@
 ?>
 
 <aside class="sidebar">
+    <?php if (is_single()): ?>
+        <section class="author-bio">
+            <h3 class="mt-0">About <?php the_author(); ?></h3>
+            <img src="<?= $author_avatar; ?>" alt="<?php the_author(); ?>" class="author-thumb">
+            <p class="author-description"><?= $author_desc; ?></p>
+            <h4>More articles by <?= $author_name; ?></h4>
+            <?php foreach ($author_posts as $author_post): ?>
+                <div class="author-article flex align-center">
+                    <a href="<?php the_permalink($author_post['ID']); ?>" class="mr-05">
+                        <img src="<?= get_the_post_thumbnail_url($author_post['ID']); ?>" alt="<?= $author_post['post_title']; ?> Thumbnail" class="img-responsive">
+                    </a>
+                    <h5 class="h6 mt-0">
+                        <a href="<?php the_permalink($author_post['ID']); ?>"><?= $author_post['post_title']; ?></a>
+                    </h5>
+                </div>
+            <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
     <section class="meeting-section">
         <h3>Monthly Meetings</h3>
         <p>Join us! Monthly Meetings via ZOOM<br>@ 8:30 PM EST</p>

@@ -4,6 +4,34 @@
     padding: .5rem 1rem;
     section {
         margin-bottom: 2rem;
+        text-align: center;
+        &.author-bio {
+            .author-thumb {
+                border-radius: 100px;
+                display: block;
+                margin: 0 auto;
+            }
+            .author-description {
+                margin-bottom: 1.5rem;
+            }
+            .author-article {
+                padding: .75rem 0;
+                text-align: left;
+                img {
+                    border-radius: .5rem;
+                    box-shadow: $shadowSmall;
+                    height: 70px;
+                    margin-right: .5rem;
+                    object-fit: cover;
+                    width: 100px;
+                }
+                a {
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
         &.meeting-section {
             h3 {
                 margin-top: 0;
