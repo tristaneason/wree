@@ -1,10 +1,6 @@
-<?php
-// Layout: Tag
-?>
-
 <?php get_header(); ?>
 
-<main id="tag">
+<main id="templateArticles">
     <section class="container grid two-thirds">
         <article class="">
             <header class="post-header">

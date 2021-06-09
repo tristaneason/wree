@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<main id="templateAuthor">
+<main id="author">
     <section class="container grid two-thirds">
         <article class="">
             <header class="post-header">
