@@ -53,6 +53,19 @@
                 font-size: .875rem;
                 margin: .25rem 0;
             }
+            .author-articles {
+                margin: 3rem 0;
+                h4 {
+                    margin-bottom: 1rem;
+                }
+                img {
+                    border-radius: 1rem;
+                    box-shadow: $shadowSmall;
+                    height: 100px;
+                    object-fit: cover;
+                    width: 200px;
+                }
+            }
         }
     }
     @media (min-width: $md) {
