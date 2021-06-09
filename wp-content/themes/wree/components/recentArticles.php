@@ -35,7 +35,9 @@ $recentPosts = get_posts([
                     </article>
                 <?php endforeach; ?>
             </div>
-            <?php include theme_root('/components/sidebar.php'); ?>
+            <div>
+                <?php include theme_root('/components/sidebar.php'); ?>
+            </div>
         </div>
         <?php include theme_root('/components/buttonGetRecentArticles.php'); ?>
     </div>

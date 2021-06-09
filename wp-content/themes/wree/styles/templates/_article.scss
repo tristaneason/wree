@@ -3,6 +3,21 @@
     @media (min-width: $md) {
         .post-container {
             padding-right: 1rem;
+            .post-header {
+                .category {
+                    background: $primary;
+                    color: $light;
+                    font-weight: bold;
+                    padding: .25rem .5rem;
+                }
+                img {
+                    border-radius: 1rem;
+                    margin-top: 1rem;
+                }
+            }
+            .post-body {
+                font-size: 1.125rem;
+            }
         }
     }
 }

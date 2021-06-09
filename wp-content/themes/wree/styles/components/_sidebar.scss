@@ -1,11 +1,17 @@
 .sidebar {
     border: 1px solid $lightGrey;
+    box-shadow: $shadowSmall;
     padding: .5rem 1rem;
     section {
         margin-bottom: 2rem;
         &.meeting-section {
             h3 {
                 margin-top: 0;
+            }
+        }
+        &.contact-section {
+            .d-block {
+                margin-top: 1rem;
             }
         }
     }
