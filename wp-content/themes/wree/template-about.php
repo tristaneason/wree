@@ -11,7 +11,10 @@
                 <h1><?php the_title(); ?></h1>
             </header>
             <div class="">
-
+                <h2><?php the_field('who_we_are_heading'); ?></h2>
+                <?php the_field('who_we_are'); ?>
+                <h2><?php the_field('wree_history_heading'); ?></h2>
+                <?php the_field('wree_history'); ?>
             </div>
             <footer class="post-footer">
 
