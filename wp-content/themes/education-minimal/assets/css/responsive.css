@@ -1,0 +1,414 @@
+/*  12.0 ===== Medias/Responsive =====   */
+
+/*
+ * Does the same thing as <meta name="viewport" content="width=device-width">,
+ * but in the future W3C standard way. -ms- prefix is required for IE10+ to
+ * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
+ * the meta tag. See https://core.trac.wordpress.org/ticket/25888.
+ */
+@-ms-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+@media only screen and (max-width: 1300px) {
+	.our-team .slick-next {
+	    right: 0;
+	}
+	.our-team .slick-prev {
+	    left: 0;
+	}
+	.blog-section .blog-wrap{
+		margin: 0 -15px 0 0;
+	}
+	.blog-section .blog-wrap .post{
+		width: 30%;
+	    width: -ms-calc(33% - 15px);
+	    width: -moz-calc(33% - 15px);
+	    width: -webkit-calc(33% - 15px);
+	    width: calc(33% - 15px);
+	    margin: 0 15px 15px 0;
+	}
+	.blog-section .blog-wrap .post:nth-of-type(4n), .blog-section .blog-wrap .post:nth-of-type(4n+1){
+		width: 64%;
+	    width: -ms-calc(67% - 15px);
+	    width: -moz-calc(67% - 15px);
+	    width: -webkit-calc(67% - 15px);
+	    width: calc(67% - 15px);
+
+	}
+}
+/* All Tablet Portrait size smaller than standard 1199 (devices and browsers) */
+@media only screen and (max-width: 1199px) {
+	.main-navigation {
+	    width: -moz-calc(100% - 150px);
+	    width: -webkit-calc(100% - 150px);
+	    width: calc(100% - 150px);
+	}
+	.enquiry{
+		width: 150px;
+	}
+	.downloads, select.language {
+	    margin-left: 20px;
+	}
+	.about-section .welcome-media{
+		margin-right: 0;
+	}
+	.silent-feature {
+	    padding: 0 15px;
+	}
+
+	/*.main-navigation .menu-container > ul > li > a::before{
+		margin-right:5px;
+	}
+	.main-navigation .menu-container > ul > li > a::after{
+		margin-left: 5px;
+	}*/
+	
+}
+@media only screen and (max-width: 1140px) {
+	.main-navigation ul li a{
+		font-size: 14px;
+	}
+}
+/* All Tablet Portrait size smaller than standard 1023 (devices and browsers) */
+@media only screen and (max-width: 1023px) {
+	.enquiry a {
+	    padding: 34px 10px;
+	    font-size: 14px;
+	}
+}
+@media only screen and (max-width: 992px) {
+	.course .custom-col-4{
+		width: 50%;
+    	float: left;
+	}
+	.course .custom-col-4:nth-of-type(3n+1){
+		clear: none;
+	}
+	.course .custom-col-4:nth-of-type(2n+1){
+		clear: left;
+	}
+	.course .course-thumbnail img{
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.blog-section .post .entry-meta .posted-on, 
+	.blog-section .post .entry-meta .post-cat-list{
+		display: block;
+	}
+	.blog-section .post .entry-meta .posted-on + .post-cat-list{
+		margin-left: 0;
+		margin-top:5px;
+	}
+	.search-course-wrap{
+		max-width: 70%;
+	}
+	.promo-wrap .section-intro .entry-title{
+		font-size:30px;
+	}
+	/*inner pages*/
+	.page-title-wrap [class^=custom-col-]{
+		width: 100%;
+		float: none;
+	}
+	.page-title-wrap{
+		text-align: center;
+	}
+	.page-title-wrap .section-intro{
+		margin-bottom:20px;
+	}
+	.page-title-wrap .search-course-wrap{
+		margin:0 auto;
+	}
+	.grid-view-design .tab-content{
+		margin-left: 0;
+	}
+	.grid-view-design .course-item{
+		width:100%;
+		float: none;
+		margin-left:0;
+	}
+	.course-item .course-thumbnail img{
+		margin:0 auto;
+	}
+	/*mean menu css for header layout-1*/
+	.main-header-wrap.mean-container .mean-nav{
+		background:#000;
+	}
+	.main-header-wrap.mean-container .mean-bar{
+	    background: transparent;
+	    position: absolute;
+	    top: 100%;
+	    right: 256px;
+	    left: 0;
+	    bottom: 0;
+	    height: 0;
+	    padding: 0;
+	    min-height: 1px;
+	}
+	.main-header-wrap.mean-container .mean-bar .meanmenu-reveal{
+		background: transparent;
+	    top: auto;
+	    margin-right: 155px;
+	    margin-bottom: 15px;
+	    color: #b81213;
+	    bottom: 100%;
+	}
+	.main-header-wrap.mean-container .mean-bar .meanmenu-reveal span{
+		background: #b81213;
+	}
+	.main-header-wrap.mean-container .mean-nav {
+	    margin-top: 0;
+	    position: absolute;
+	    top:0;
+	}
+	.main-header-wrap.mean-container .mean-nav ul li a{
+		border-color:#0e0e0e;
+	}
+	.main-header-wrap.mean-container .mean-nav ul li a.mean-expand{
+		border-color:#0e0e0e ! important;
+		height: auto;
+	}
+}
+@media only screen and (max-width: 840px) {
+	#primary.custom-col-8,
+	#secondary.custom-col-4{
+		width:100%;
+		float: none;
+	}
+}
+/* All Mobile Portrait size smaller than 768 (devices and browsers) */
+@media only screen and (max-width: 768px) {
+	.custom-col-1,  
+	.custom-col-2,  
+	.custom-col-3,  
+	.custom-col-4,  
+	.custom-col-5, 
+	.custom-col-6,  
+	.custom-col-7,  
+	.custom-col-8, 
+	.custom-col-9,  
+	.custom-col-10,  
+	.custom-col-11,  
+	.custom-col-12 {
+	    float: none;
+	    width: 100%;
+	}
+	.hgroup-wrap{
+		position: static;
+	}
+	.hgroup-wrap .top-header .custom-col-4{
+		background:#e4e4e4;
+	}
+	.hgroup-wrap .social-links {
+		padding:7px 0;
+	    text-align: right;
+	}
+	.blog-section .blog-wrap{
+		margin: 0;
+	}
+	.blog-section .blog-wrap .post,.blog-section .blog-wrap .post:nth-of-type(4n), .blog-section .blog-wrap .post:nth-of-type(4n+1){
+		width: 100%;
+		margin: 0 0 15px 0;
+	}
+	.blog-section .post .entry-meta .posted-on, .blog-section .post .entry-meta .post-cat-list{
+		display: inline-block;
+	}
+	.blog-section .post .entry-meta .posted-on + .post-cat-list{
+		margin-left:5px;
+		margin-top:0;
+	}
+	.company-info .container{
+		padding-bottom: 0;
+	}
+	.company-info-wrap{
+		width: 100%;
+	}
+	.company-info-wrap .custom-col-6{
+		width: 50%;
+		float: left;
+	}
+	.company-info figure{
+		position: static;
+	}
+	.company-info figure img{
+		margin: 0 auto;
+	}
+	.search-course-wrap{
+		max-width:300px;
+	}
+	.form-search-course{
+		display: block;
+		margin-bottom: 10px;
+	}
+	.form-search-course select,
+	.form-search-course input[type=search],
+	.form-search-course input[type=submit]{
+		width: 100%;
+		height:40px;
+		border:none;
+	}
+	.form-search-course select,
+	.form-search-course input[type=search]{
+		margin-bottom:7px;
+	}
+	.search-course-wrap h2 {
+	    display: none;
+	}
+	.about-section .welcome-media{
+		margin-bottom: 50px;
+	}
+	.event-section .post + .post {
+	    margin-top:0;
+	}
+	.event-section .post{
+		max-width: 400px;
+		margin:0 auto 40px;
+	}
+	.event-section .row .custom-col-4:last-child .post{
+		margin-bottom:0;
+	}
+	.event-section .post img{
+		width: 100%;
+		object-fit: cover;
+	}
+	.newsletter-section .custom-col-4{
+		width:40%;
+		float: left;
+	}
+	.newsletter-section .custom-col-8{
+		width: 60%;
+		float: left;
+	}
+	.testimonial .testimonial-content{
+		width: 320px;
+	}
+	.enroll-section {
+	    position:relative;
+	}
+	.footer-mid [custom-col-]{
+		width: 50%;
+		float: left;
+	}
+
+
+	.list-view-design .course-thumbnail,
+	.list-view-design .course-item-contain{
+	    width:100%;
+	    float:none;
+	}
+
+	
+}
+@media only screen and (max-width: 640px){
+	.blog-section .blog-wrap .post:nth-of-type(4n) .post-image, 
+	.blog-section .blog-wrap .post:nth-of-type(4n+1) .post-image, 
+	.blog-section .blog-wrap .post:nth-of-type(4n) .post-content, 
+	.blog-section .blog-wrap .post:nth-of-type(4n+1) .post-content {
+	    width: 100%;
+	    float:none;
+	}
+	.course .custom-col-4 {
+	    width: 100%;
+	    float: none;
+	    margin: 0 auto;
+	}
+	.newsletter-section{
+		padding:50px 0;
+	}
+	.newsletter-section .custom-col-4{
+		width:100%;
+		float: none;
+	}
+	.newsletter-section .custom-col-8{
+		width: 100%;
+		float: none;
+	}
+	.newsletter-section .social-links {
+	    background:transparent;
+	    padding:0;
+	    margin: 0 0 50px 0;
+	}
+	.company-info-wrap .custom-col-6{
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	.company-info-item{
+		display: inline-block;
+		text-align: left;
+		margin-bottom: 59px;
+	}
+	.downloads, select.language {
+	    margin-left: 10px;
+	}
+	.promo-wrap .row{
+		display: block;
+	}
+	.testimonial-image .slick-prev{
+		right:auto;
+		left:-10px;
+	}
+	.testimonial-image .slick-next{
+		left:auto;
+		right: -10px;
+	}
+	.comment-body ol{
+		margin-left: 0;
+	}
+	.comment-box figure {
+    	width:50px;
+	    height:50px;
+	}
+	.comment-box{
+		padding-left: 63px;
+	}
+	.comment-form-comment, .comment-form-author, .comment-form-email {
+	    width:100%;
+	    float:none;
+	    padding:0;
+	}
+}
+/* All Mobile size smaller than standard 479 (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	.video-description{
+		display: none;
+	}
+	.main-header-wrap{
+		display: block;
+	}
+	.form-search-course select, .form-search-course input[type=search], .form-search-course input[type=submit]{
+		height: 30px;
+	}
+	.header-action .search-field{
+		width: 100px;
+	}
+	.testimonial-image .slick-prev{
+		right:auto;
+		left:0;
+	}
+	.testimonial-image .slick-next{
+		left:auto;
+		right:0;
+	}
+	.testimonial .testimonial-content{
+		width:280px;
+	}
+	.main-header-wrap.mean-container .mean-bar .meanmenu-reveal{
+		margin-top:0;
+		left: 10px ! important;
+	}
+	.enquiry a {
+    	padding: 20px 10px;
+    }
+    .main-header-wrap .site-branding img {
+	    display: block;
+	    margin: 0 auto;
+	}
+}
+
