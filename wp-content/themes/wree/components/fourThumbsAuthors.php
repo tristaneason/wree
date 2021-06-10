@@ -62,7 +62,7 @@ $authorsPosts = get_posts([
                 <?php foreach ($authorsPosts as $authorPost): ?>
                     <div class="card">
                         <a href="<?= get_the_permalink($authorPost->ID); ?>" class="thumbnail">
-                            <img src="<?= get_the_post_thumbnail_url($authorPost->ID, 'medium'); ?>');" alt="<?= get_author_posts_url($authorPost->post_author); ?>">
+                            <img src="<?= get_the_post_thumbnail_url($authorPost->ID, 'medium'); ?>" alt="<?= $authorPost->post_title; ?> Thumbnail">
                         </a>
                         <a href="<?= get_the_permalink($authorPost->ID); ?>">
                             <h3><?= $authorPost->post_title; ?></h3>
