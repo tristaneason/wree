@@ -380,7 +380,7 @@ function r34ics_hour_format($time_format=null) {
 }
 
 
-// Detect if a string contains HTML
+// Detect if a string contains HTML (not 100% reliable)
 // Source: https://stackoverflow.com/a/33614682
 function r34ics_is_html($str) {
 	return preg_match('/\/[a-z]*>/i', $str) != 0;
@@ -469,13 +469,31 @@ function r34ics_line_break_fix($ics_contents) {
 }
 
 
-// Apply make_clickable() function only if string does not contain HTML
+// Apply make_clickable() function to text string, and also deal with common quirks of iCalendar description data
 function r34ics_maybe_make_clickable($str) {
+	// Check if the string has any HTML (to decide whether or not to run nl2br() on the end result)
+	$has_html = r34ics_is_html($str);
+
+	// Convert HTML entities
 	$str = html_entity_decode($str);
-	if (!r34ics_is_html($str)) {
-		$str = make_clickable(nl2br($str));
+	
+	// Microsoft Teams / Office 365
+	// Get rid of the long line of underscores
+	$str = trim(str_replace('________________________________________________________________________________', '', $str));
+	// Assign URLs inside angle brackets to the text that immediately precedes them
+	if (strpos($str, '<http') !== false) {
+		$str = preg_replace('/(([\s]*)([^<\v\|]+?)<([^>]+?)>)/', '\2<a href="\4" target="_blank" rel="noopener noreferrer nofollow">\3</a>', $str);
 	}
-	return $str;
+	// Handle URLs occuring on their own inside square brackets -- not caught by make_clickable()
+	if (strpos($str, '[http') !== false) {
+		$str = preg_replace('/\[(http[^\]]+?)\]/', '<a href="\1" target="_blank" rel="noopener noreferrer nofollow">\1</a>', $str);
+	}
+	
+	// Add <br /> tags if appropriate (must come last to avoid interfering with above logic)
+	if (!$has_html) { $str = nl2br($str); }
+
+	// Run standard WP make_clickable() function on what's left
+	return make_clickable($str);
 }
 
 

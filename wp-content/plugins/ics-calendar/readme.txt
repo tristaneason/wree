@@ -5,7 +5,7 @@ Tags: calendar, iCal, iCalendar, feed, embed calendar, Google Calendar, Outlook,
 Requires at least: 4.9
 Tested up to: 5.7.2
 Requires PHP: 7.0.0
-Stable tag: 7.6.0
+Stable tag: 7.7.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,19 @@ The paid [ICS Calendar Pro](https://icscalendar.com) add-on includes additional 
 == Screenshots ==
 
 == Changelog ==
+
+= 7.7.1.1 - 2021.06.10 =
+
+* Fixed "Undefined variable: d" PHP notice that was appearing on week view since a11y changes added in version 7.6.0.
+* Note: Stable tag for version 7.7.1 was inadvertently not updated, so updating to this version will also make the version 7.7.1 changes available, which may not have been previously.
+
+= 7.7.1 - 2021.06.07 =
+
+* Restructured `r34ics_maybe_make_clickable()` to support link formatting common in Microsoft Teams (Office 365) meetings, and improved use of `r34ics_is_html()` in determining whether or not to add HTML line breaks.
+
+= 7.7.0 - 2021.06.07 =
+
+* Refactored `R34ICS::display_calendar()` method: moved date range calculation and array sorting out of `foreach()` loop to improve performance on calendars with multiple feeds, and to avoid PHP warnings that may have occurred in edge cases where no feed was loaded. **Please note: These changes have eliminated timezone overrides for date range calculations, which could result in some calendars starting or ending one day off from the intended dates, especially if your feed timezone is different from your site's default timezone.** Please report any issues in the [WordPress support forums](https://wordpress.org/support/plugin/ics-calendar/).
 
 = 7.6.0 - 2021.06.01 =
 

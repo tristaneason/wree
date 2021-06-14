@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) { exit; }
 
 class R34ICS {
 
-	public $version = '7.6.0';
+	public $version = '7.7.1.1';
 
 	public $colors = array(
 		'white' => '#ffffff',		// rgb(255,255,255)
@@ -335,7 +335,117 @@ class R34ICS {
 			// Set colors and feed titles for color key
 			$ics_data['colors'] = apply_filters('r34ics_display_calendar_color_set', (!empty($color) ? r34ics_color_set(r34ics_space_pipe_explode($color)) : null), $args);
 			$ics_data['feed_titles'] = !empty($feedlabel) ? explode('|', $feedlabel) : array();
+
+			// Determine date range for parser (these can be rough -- it's just to limit excessive unnecessary parsing)
+			// Add a month to $range_start to accommodate multi-day events that may begin out of range
+			if ((!empty($startdate) && intval($startdate) > 20000000)) {
+				$range_start = r34ics_date('Y/m/d', $startdate, null, '-30 days');
+				$range_end = r34ics_date('Y/m/d', $startdate, null, '+' . intval($limitdays+7) . ' days');
+			}
+			else {
+				if (!empty($pastdays)) {
+					$range_start = r34ics_date('Y/m/d', null, null, '-' . intval($pastdays+30) . ' days');
+				}
+				else {
+					$range_start = r34ics_date('Y/m/d', null, null, '-' . intval(wp_date('j')+30) . ' days');
+				}
+				// Extend by "limitdays" + one week past current date
+				$range_end = r34ics_date('Y/m/d', null, null, '+' . intval($limitdays+7) . ' days');
+			}
+			// Additional filtering of range dates
+			$range_start = apply_filters('r34ics_display_calendar_range_start', $range_start, $args);
+			$range_end = apply_filters('r34ics_display_calendar_range_end', $range_end, $args);
 			
+			// Get day counts for ICS Parser's range filters
+			$now_dtm = new DateTime();
+			$filter_days_after = $now_dtm->diff(new DateTime($range_end))->format('%a');
+			$filter_days_before = $now_dtm->diff(new DateTime($range_start))->format('%a');
+			
+			// Default values for display date range
+			$first_date = r34ics_date('Ymd');
+			$limit_date = r34ics_date('Ymd', $first_date, null, '+' . intval($limitdays-1) . ' days');
+			
+			// Set exact display date range, per view
+			switch (@$view) {
+				case 'week':
+				case 'currentweek': // Rolling date range from start of previous week to end of next week
+					if (($limitdays >= 1 && $limitdays <= 7) || !empty($startdate)) {
+						if ($limitdays < 1 || $limitdays > 7) { $limitdays = 7; }
+						if (!empty($startdate) && intval($startdate) > 20000000) {
+							$first_date = $startdate;
+						}
+						else {
+							$first_date = r34ics_date('Ymd');
+						}
+						$first_ts = strtotime($first_date);
+						$limit_date = r34ics_date('Ymd', $first_date, null, '+' . intval($limitdays-1) . ' days');
+					}
+					else {
+						$cw1 = r34ics_first_day_of_current('week');
+						$first_date = r34ics_date('Ymd', '@' . $cw1, null, '-7 days');
+						$first_ts = strtotime($first_date);
+						$limit_date = r34ics_date('Ymd', '@' . $cw1, null, '+13 days');
+					}
+					break;
+				case 'list':
+					if (!empty($startdate) && intval($startdate) > 20000000) {
+						$first_date = $startdate;
+					}
+					elseif (!empty($pastdays)) {
+						$first_date = r34ics_date('Ymd', null, null, '-' . intval($pastdays) . ' days');
+					}
+					else {
+						$first_date = r34ics_date('Ymd');
+					}
+					$first_ts = strtotime($first_date);
+					$limit_date = r34ics_date('Ymd', $first_date, null, '+' . intval($limitdays-1) . ' days');
+					break;
+				case 'month':
+					if (!empty($startdate) && intval($startdate) > 20000000) {
+						$first_date = $startdate;
+					}
+					elseif (!empty($pastdays)) {
+						$first_date = r34ics_date('Ymd', $first_date, null, '-' . intval($pastdays) . ' days');
+					}
+					else {
+						$first_date = r34ics_date('Ymd', '@' . r34ics_first_day_of_current('month'), null);
+					}
+					$first_ts = strtotime($first_date);
+					$limit_date = r34ics_date('Ymd', $first_date, null, '+' . intval($limitdays-1) . ' days');
+					break;
+				default:
+					// Handle other views externally
+					$first_date = apply_filters('r34ics_display_calendar_set_first_date', $view, $first_date, $startdate, $pastdays);
+					$first_ts = strtotime($first_date);
+					$limit_date = apply_filters('r34ics_display_calendar_set_limit_date', $view, $first_ts, $limitdays);
+					break;
+			}
+
+			// Set earliest and latest dates
+			switch (@$view) {
+				case 'week':
+				case 'currentweek':
+					$ics_data['earliest'] = $first_date;
+					$ics_data['latest'] = !empty($limitdayscustom) ? r34ics_date('Ymd', $first_date, null, '+' . intval($limitdays-1) . ' days') : $limit_date;
+					break;
+				case 'list':
+				case 'month':
+					$ics_data['earliest'] = substr($first_date,0,6);
+					$ics_data['latest'] = !empty($limitdayscustom) ? r34ics_date('Ym', $first_date, null, '+' . intval($limitdays-1) . ' days') : substr($limit_date,0,6);
+					break;
+				default:
+					// Handle other views externally
+					$ics_data['earliest'] = apply_filters('r34ics_display_calendar_set_earliest', $view, $first_date);
+					$ics_data['latest'] = apply_filters('r34ics_display_calendar_set_latest', $view, $limit_date, $first_ts, $limitdays, $limitdayscustom);
+					break;
+			}
+
+			// Debugging information
+			if ($this->debug) {
+				$this->debug_messages['Included date range'] = $first_date . ' to ' . $limit_date;
+			}
+		
+			// Process each individual feed URL
 			foreach ((array)$ics_data['urls'] as $feed_key => $url) {
 			
 				// Get timezone for this feed
@@ -361,34 +471,9 @@ class R34ICS {
 					$ics_contents = r34ics_line_break_fix($ics_contents);
 				}
 				
-				// Determine start and end dates for range (these can be rough -- it's just to limit excessive unnecessary parsing)
-				// As of v. 7.1.0 we're adding a month to $range_start to accommodate multi-day events that may begin out of range
-				if ((!empty($startdate) && intval($startdate) > 20000000)) {
-					$range_start = r34ics_date('Y/m/d', $startdate, $url_tz, '-30 days');
-					$range_end = r34ics_date('Y/m/d', $startdate, $url_tz, '+' . intval($limitdays+7) . ' days');
-				}
-				else {
-					if (!empty($pastdays)) {
-						$range_start = r34ics_date('Y/m/d', null, $url_tz, '-' . intval($pastdays+30) . ' days');
-					}
-					else {
-						$range_start = r34ics_date('Y/m/d', null, $url_tz, '-' . intval(wp_date('j')+30) . ' days');
-					}
-					// Extend by "limitdays" + one week past current date
-					$range_end = r34ics_date('Y/m/d', null, $url_tz, '+' . intval($limitdays+7) . ' days');
-				}
-				// Additional filtering of range dates
-				$range_start = apply_filters('r34ics_display_calendar_range_start', $range_start, $args);
-				$range_end = apply_filters('r34ics_display_calendar_range_end', $range_end, $args);
-				
 				// Filter to allow external pre-processing of raw feed contents before parsing
 				$ics_contents = apply_filters('r34ics_display_calendar_preprocess_raw_feed', $ics_contents, $range_start, $range_end, $args);
 
-				// Get day counts for ICS Parser's range filters
-				$now_dtm = new DateTime();
-				$filter_days_after = $now_dtm->diff(new DateTime($range_end))->format('%a');
-				$filter_days_before = $now_dtm->diff(new DateTime($range_start))->format('%a');
-				
 				// Parse ICS contents
 				if (!$this->parser_loaded) {
 					$this->parser_loaded = $this->_load_parser();
@@ -403,6 +488,9 @@ class R34ICS {
 					'skipRecurrence'				=> $skiprecurrence,
 				));
 				$ICal->initString($ics_contents);
+				
+				// Free up some memory
+				unset($ics_contents);
 
 				// Update general calendar information
 				if (empty($ics_data['title']) && r34ics_boolean_check($title) !== false) { $ics_data['title'] = $ICal->calendarName(); }
@@ -566,94 +654,19 @@ class R34ICS {
 				if (empty($ics_data['events'])) {
 					$ics_data['events'] = array(r34ics_date('Ymd') => array());
 				}
-
-				// Remove out-of-range dates
-				if (!empty($ics_data['events'])) {
-					$first_date = r34ics_date('Ymd'); // Default value
-					$limit_date = null;
-					switch (@$view) {
-						case 'week':
-						case 'currentweek': // Rolling date range from start of previous week to end of next week
-							if (($limitdays >= 1 && $limitdays <= 7) || !empty($startdate)) {
-								if ($limitdays < 1 || $limitdays > 7) { $limitdays = 7; }
-								if (!empty($startdate) && intval($startdate) > 20000000) {
-									$first_date = $startdate;
-								}
-								else {
-									$first_date = r34ics_date('Ymd');
-								}
-								$first_ts = strtotime($first_date);
-								$limit_date = r34ics_date('Ymd', $first_date, $url_tz, '+' . intval($limitdays-1) . ' days');
-							}
-							else {
-								$cw1 = r34ics_first_day_of_current('week');
-								$first_date = r34ics_date('Ymd', '@' . $cw1, $url_tz, '-7 days');
-								$first_ts = strtotime($first_date);
-								$limit_date = r34ics_date('Ymd', '@' . $cw1, $url_tz, '+13 days');
-							}
-							break;
-						case 'list':
-							if (!empty($startdate) && intval($startdate) > 20000000) {
-								$first_date = $startdate;
-							}
-							elseif (!empty($pastdays)) {
-								$first_date = r34ics_date('Ymd', null, $url_tz, '-' . intval($pastdays) . ' days');
-							}
-							else {
-								$first_date = r34ics_date('Ymd');
-							}
-							$first_ts = strtotime($first_date);
-							$limit_date = r34ics_date('Ymd', $first_date, $url_tz, '+' . intval($limitdays-1) . ' days');
-							break;
-						case 'month':
-							if (!empty($startdate) && intval($startdate) > 20000000) {
-								$first_date = $startdate;
-							}
-							elseif (!empty($pastdays)) {
-								$first_date = r34ics_date('Ymd', $first_date, $url_tz, '-' . intval($pastdays) . ' days');
-							}
-							else {
-								$first_date = r34ics_date('Ymd', '@' . r34ics_first_day_of_current('month'), $url_tz);
-							}
-							$first_ts = strtotime($first_date);
-							$limit_date = r34ics_date('Ymd', $first_date, $url_tz, '+' . intval($limitdays-1) . ' days');
-							break;
-						default:
-							// Handle other views externally
-							$first_date = apply_filters('r34ics_display_calendar_set_first_date', $view, $first_date, $startdate, $pastdays);
-							$first_ts = strtotime($first_date);
-							$limit_date = apply_filters('r34ics_display_calendar_set_limit_date', $view, $first_ts, $limitdays);
-							break;
-					}
-					// Remove out-of-range events and sort the rest
-					foreach (array_keys((array)$ics_data['events']) as $date) {
-						if ($date < $first_date || $date > $limit_date) { unset($ics_data['events'][$date]); }
-						else { ksort($ics_data['events'][$date]); }
-					}
-				}
 				
-				// Debugging information
-				if ($this->debug) {
-					$this->debug_messages['Included date range'] = $first_date . ' to ' . $limit_date;
-				}
-			
 			}
 
-			// No events in array -- throw notice (if debugging) and return false
-			/* Removed in v. 7.1.0 because it needlessly hides a legitimate calendar that just doesn't have any events in range
-			if (empty($ics_data['events'])) {
-				if (!empty($this->debug)) {
-					trigger_error(__('No events found in ICS feed(s). This may mean your calendar contains no events, your feed URL may be incorrect, or your shortcode may have other configuration errors. Set debug="true" in shortcode for additional details.','r34ics'), E_USER_NOTICE);
-					r34ics_debug($this->debug_messages);
+			// Remove out-of-range dates and sort the rest
+			if (!empty($ics_data['events'])) {
+				foreach (array_keys((array)$ics_data['events']) as $date) {
+					if ($date < $first_date || $date > $limit_date) { unset($ics_data['events'][$date]); }
+					else { ksort($ics_data['events'][$date]); }
 				}
+				ksort($ics_data['events']);
 			}
-			*/
-
-			// Sort events
-			ksort($ics_data['events']);
 			
 			// Split events into year/month/day groupings
-			$max_date = null;
 			foreach ((array)$ics_data['events'] as $date => $events) {
 				$year = substr($date,0,4);
 				$month = substr($date,4,2);
@@ -661,28 +674,8 @@ class R34ICS {
 				$ym = substr($date,0,6);
 				$ics_data['events'][$year][$month][$day] = $events;
 				unset($ics_data['events'][$date]);
-				if ($date > $max_date) { $max_date = $date; }
 			}
 			
-			// Set earliest and latest dates
-			switch (@$view) {
-				case 'week':
-				case 'currentweek':
-					$ics_data['earliest'] = $first_date;
-					$ics_data['latest'] = !empty($limitdayscustom) ? r34ics_date('Ymd', $first_date, $url_tz, '+' . intval($limitdays-1) . ' days') : $max_date;
-					break;
-				case 'list':
-				case 'month':
-					$ics_data['earliest'] = substr($first_date,0,6);
-					$ics_data['latest'] = !empty($limitdayscustom) ? r34ics_date('Ym', $first_date, $url_tz, '+' . intval($limitdays-1) . ' days') : substr($max_date,0,6);
-					break;
-				default:
-					// Handle other views externally
-					$ics_data['earliest'] = apply_filters('r34ics_display_calendar_set_earliest', $view, $first_date);
-					$ics_data['latest'] = apply_filters('r34ics_display_calendar_set_latest', $view, $max_date, $first_ts, $limitdays, $limitdayscustom);
-					break;
-			}
-
 			// Add empty event arrays, if necessary, to populate dropdowns and grids
 			/*
 			Note: This prevents a simple check for whether or not there are events;

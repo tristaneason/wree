@@ -144,8 +144,9 @@ if (!empty($ics_data['colors'])) {
 								// Month does not fall within range of start and end dates
 								if ($date < $startdate || $date > $enddate) { continue(2); }
 							}
-							$dow = r34ics_date('w',$date);
-							$day_events = isset($ics_data['events'][$year][$month][r34ics_date('d',$date)]) ? $ics_data['events'][$year][$month][r34ics_date('d',$date)] : null;
+							$d = r34ics_date('d', $date);
+							$dow = r34ics_date('w', $date);
+							$day_events = isset($ics_data['events'][$year][$month][$d]) ? $ics_data['events'][$year][$month][$d] : null;
 							$day_guid = $ics_data['guid'] . '-' . $ym . $d;
 							$day_classes = r34ics_day_classes(array(
 								'date' => $date,

@@ -92,6 +92,9 @@ class Settings_Controller extends Controller {
 		//Todo: Can we use pre_update_option_ss_podcasting_data_title action instead?
 		add_action( 'admin_init', array( $this, 'maybe_feed_saved' ), 11 );
 
+		// Exclude series feed from the default feed
+		add_action( 'create_series', array( $this, 'exclude_feed_from_default' ) );
+
 		// Register podcast settings.
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 
@@ -134,6 +137,16 @@ class Settings_Controller extends Controller {
 	}
 
 	/**
+	 * Adding it here, and not via default settings for the backward compatibility.
+	 * So if users have their old series included in the default feed, it should not affect them.
+	 * */
+	public function exclude_feed_from_default( $term_id ) {
+		$option_name = 'ss_podcasting_exclude_feed_' . $term_id;
+
+		update_option( $option_name, 'on' );
+	}
+
+	/**
 	 * Add settings page to menu
 	 *
 	 * @return void
@@ -154,24 +167,6 @@ class Settings_Controller extends Controller {
 			 $this,
 			 'settings_page',
 		 ) );*/
-
-		add_submenu_page( null, __( 'Upgrade', 'seriously-simple-podcasting' ), __( 'Upgrade', 'seriously-simple-podcasting' ), 'manage_podcast', 'upgrade', array(
-			$this,
-			'show_upgrade_page',
-		) );
-	}
-
-	/**
-	 * Show the upgrade page
-	 */
-	public function show_upgrade_page() {
-		$ssp_redirect = ( isset( $_GET['ssp_redirect'] ) ? filter_var( $_GET['ssp_redirect'], FILTER_SANITIZE_STRING ) : '' );
-		$ssp_dismiss_url = add_query_arg( array(
-				'ssp_dismiss_upgrade' => 'dismiss',
-				'ssp_redirect'        => rawurlencode( $ssp_redirect ),
-				'nonce'               => wp_create_nonce( 'ssp_dismiss_upgrade' ),
-			), admin_url( 'index.php' ) );
-		include( $this->template_path . DIRECTORY_SEPARATOR . 'settings-upgrade-page.php' );
 	}
 
 	/**

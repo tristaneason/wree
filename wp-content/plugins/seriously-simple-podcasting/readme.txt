@@ -4,7 +4,7 @@ Tags: podcast, audio, video, vodcast, rss, mp3, mp4, feed, itunes, podcasting, m
 Requires at least: 4.4
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 2.7.0
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,8 @@ Podcasting the way it's meant to be. No mess, no fuss - just you and your conten
 
 == Description ==
 Seriously Simple Podcasting is a top-rated podcasting plugin for WordPress for beginners and power-users built by [Castos](http://castos.com/podcast-hosting-wordpress). Using our straight-forward set up instructions, advanced features, and plenty of customization options, Seriously Simple Podcasting powers over 20K+ podcasts.
+
+https://vimeo.com/560129506
 
 The plugin will *always* remain free to use. The only costs associated with using Seriously Simple Podcasting is if you choose to host your audio files with a dedicated podcast hosting provider. Similar to using a website hosting provider to keep your WordPress site fast and running smoothly, we recommend hosting podcast files with a dedicated provider. But remember, this isn't required!
 
@@ -158,6 +160,21 @@ You can find complete user and developer documentation (along with the FAQs) on 
 15. View podcast episodes in the At A Glance widget on the main WordPress dashboard.
 
 == Changelog ==
+
+= 2.7.2 =
+* 2021-06-11
+* UPDATE SUMMARY: Hotfix for the "Exclude series from default feed" by default option
+* [FIX] Reverted "Exclude series from default feed" to the previous state
+* [FIX] Select "Exclude series from default feed" by default ONLY for the new series
+
+
+= 2.7.1 =
+* 2021-06-10
+* UPDATE SUMMARY: Updated the onboarding wizard video, UX improvement
+* [UPDATE] Updated the onboarding wizard video
+* [UPDATE] Added the video to the plugin description
+* [UPDATE] Removed the old welcome page
+* [FIX] When creating a new Series, select "Exclude series from default feed" by default
 
 = 2.7.0 =
 * 2021-05-20
