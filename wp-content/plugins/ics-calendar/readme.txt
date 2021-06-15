@@ -5,7 +5,7 @@ Tags: calendar, iCal, iCalendar, feed, embed calendar, Google Calendar, Outlook,
 Requires at least: 4.9
 Tested up to: 5.7.2
 Requires PHP: 7.0.0
-Stable tag: 7.7.1.1
+Stable tag: 7.7.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ The paid [ICS Calendar Pro](https://icscalendar.com) add-on includes additional 
 == Screenshots ==
 
 == Changelog ==
+
+= 7.7.1.2 - 2021.06.13 =
+
+* Fixed broken "Show past events" link in week view (mobile breakpoint).
 
 = 7.7.1.1 - 2021.06.10 =
 

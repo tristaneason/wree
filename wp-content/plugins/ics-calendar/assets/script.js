@@ -104,6 +104,21 @@ jQuery(function() {
 			r34ics_cal.find('.ics-calendar-month-grid tbody tr').css('display','none');
 			r34ics_cal.find('.ics-calendar-month-grid tbody tr.' + jQuery(this).val()).css('display','table-row');
 		});
+		// Show/hide past events on mobile
+		jQuery('a[data-ics-calendar-action="show-past-events"]').on('click', function() {
+			var r34ics_cal = jQuery(this).closest('.ics-calendar');
+			if (!r34ics_cal.hasClass('show-past-events')) {
+				r34ics_cal.addClass('show-past-events');
+				// On week view, remove this from the DOM instead of showing toggle
+				jQuery(this).remove();
+			}
+			else {
+				r34ics_cal.removeClass('show-past-events');
+				jQuery(this).text(ics_calendar_i18n.show_past_events);
+			}
+			// Don't jump!
+			return false;
+		});
 		// Initial state
 		jQuery('.ics-calendar.layout-week .ics-calendar-month-grid:not(.fixed_dates) tbody tr').addClass('remove');
 		jQuery('.ics-calendar.layout-week .ics-calendar-month-grid.fixed_dates tbody tr').addClass('current-week');
@@ -170,14 +185,8 @@ jQuery(function() {
 			var r34ics_cal = jQuery(this).closest('.ics-calendar');
 			if (!r34ics_cal.hasClass('show-past-events')) {
 				r34ics_cal.addClass('show-past-events');
-				// On week view, remove this from the DOM
-				if (r34ics_cal.hasClass('layout-week')) {
-					jQuery(this).remove();
-				}
-				// On other views, show toggle
-				else {
-					jQuery(this).text(ics_calendar_i18n.hide_past_events);
-				}
+				// Show toggle
+				jQuery(this).text(ics_calendar_i18n.hide_past_events);
 			}
 			else {
 				r34ics_cal.removeClass('show-past-events');

@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) { exit; }
 
 class R34ICS {
 
-	public $version = '7.7.1.1';
+	public $version = '7.7.1.2';
 
 	public $colors = array(
 		'white' => '#ffffff',		// rgb(255,255,255)
