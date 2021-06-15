@@ -5,7 +5,7 @@
 <?php
 get_header();
 
-$th_size = ['size' => '200'];
+$th_size = ['size' => '400'];
 $author_id = get_the_author_meta('ID');
 $author_url = get_author_posts_url($author_id);
 $author_desc = get_the_author_meta('description');

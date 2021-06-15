@@ -2,9 +2,9 @@
 // Component: Sidebar
 ?>
 
-<aside class="sidebar border-1">
+<aside class="sidebar">
     <?php if (is_single()): ?>
-        <section class="author-bio">
+        <section class="author-bio border-1 p-1">
             <h3 class="mt-0">About <?php the_author(); ?></h3>
             <img src="<?= $author_avatar; ?>" alt="<?php the_author(); ?>" class="author-thumb">
             <p class="author-description"><?= $author_desc; ?></p>
@@ -20,7 +20,7 @@
         </section>
     <?php endif; ?>
     <?php if (is_author()): ?>
-        <section class="author-bio">
+        <section class="author-bio border-1 p-1">
             <h3 class="mt-0">About <?php the_author(); ?></h3>
             <img src="<?= $author_avatar; ?>" alt="<?php the_author(); ?>" class="author-thumb">
             <p class="author-description"><?= $author_desc; ?></p>
