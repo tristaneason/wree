@@ -119,6 +119,12 @@ section[id] {
     }
 }
 
+.border-1 {
+    border: 1px solid $lightGrey;
+    border-radius: .5rem;
+    box-shadow: $shadowSmall;
+}
+
 .container {
     margin: 0 auto;
     max-width: 1170px;
@@ -242,6 +248,19 @@ section[id] {
 
 .mr-1 {
     margin-right: 1rem;
+}
+
+.my-0 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.p-05 {
+    padding: .5rem;
+}
+
+.p-1 {
+    padding: 1rem;
 }
 
 .sr-only {

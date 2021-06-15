@@ -1,8 +1,4 @@
 .sidebar {
-    // background: $secondary;
-    border: 1px solid $lightGrey;
-    border-radius: .25rem;
-    box-shadow: $shadowSmall;
     padding: .5rem 1rem;
     section {
         margin-bottom: 2rem;
@@ -17,19 +13,28 @@
                 margin-bottom: 1.5rem;
             }
             .author-article {
-                padding: .75rem 0;
-                text-align: left;
+                border-radius: .5rem;
+                padding: .75rem .5rem;
                 img {
                     border-radius: .5rem;
                     box-shadow: $shadowSmall;
-                    height: 70px;
+                    height: 100%;
                     margin-right: .5rem;
                     object-fit: cover;
-                    width: 100px;
+                    width: 100%;
                 }
                 a {
                     &:hover {
                         text-decoration: underline;
+                    }
+                    &:first-child {
+                        height: 70px;
+                        width: 100px;
+                    }
+                    &:last-child {
+                        @media (min-width: $md) {
+                            width: 200px;
+                        }
                     }
                 }
             }
@@ -37,6 +42,13 @@
         &.meeting-section {
             h3 {
                 margin-top: 0;
+            }
+        }
+        &.about-section {
+            p {
+                @media (min-width: $md) {
+                    text-align: justify;
+                }
             }
         }
         &.contact-section {

@@ -2,7 +2,7 @@
 // Component: Sidebar
 ?>
 
-<aside class="sidebar">
+<aside class="sidebar border-1">
     <?php if (is_single()): ?>
         <section class="author-bio">
             <h3 class="mt-0">About <?php the_author(); ?></h3>
@@ -10,29 +10,27 @@
             <p class="author-description"><?= $author_desc; ?></p>
             <h4>More articles by <?= $author_name; ?></h4>
             <?php foreach ($author_posts as $author_post): ?>
-                <div class="author-article flex align-center">
+                <div class="author-article border-1 flex align-center space-between">
                     <a href="<?php the_permalink($author_post['ID']); ?>" class="mr-05">
                         <img src="<?= get_the_post_thumbnail_url($author_post['ID']); ?>" alt="<?= $author_post['post_title']; ?> Thumbnail" class="img-responsive">
                     </a>
-                    <h5 class="h6 mt-0">
-                        <a href="<?php the_permalink($author_post['ID']); ?>"><?= $author_post['post_title']; ?></a>
-                    </h5>
+                    <a href="<?php the_permalink($author_post['ID']); ?>" class="my-0"><?= $author_post['post_title']; ?></a>
                 </div>
             <?php endforeach; ?>
         </section>
     <?php endif; ?>
-    <section class="meeting-section">
-        <h3>Monthly Meetings</h3>
-        <p>Join us! Monthly Meetings via ZOOM<br>@ 8:30 PM EST</p>
-        <p>Our next meeting is June 9, 2021</p>
+    <section class="meeting-section border-1 p-1">
+        <h3 class="mt-0">Monthly Meetings</h3>
+        <p class="mt-0">Join us! Monthly Meetings via Zoom<br>at 8:30 PM EDT</p>
+        <p>Our next meeting is July DD, 2021</p>
         <a href="/contact-wree/" class="button small">Contact us to join</a>
     </section>
-    <section class="about-section">
-        <h3>What We Do</h3>
-        <p>Still committed to Peace as our first priority, WREE focuses on the many social issues that prevent Peace and Prosperity for all.There are many issues that need as much support and activism from our members and friends that they can provide. Community Volunteerism is powerful.</p>
+    <section class="about-section border-1 p-1">
+        <h3 class="mt-0">What We Do</h3>
+        <p>Still committed to Peace as our first priority, WREE focuses on the many social issues that prevent Peace and Prosperity for all. There are many issues that need as much support and activism from our members and friends that they can provide. Community Volunteerism is powerful.</p>
     </section>
-    <section class="contact-section">
-        <h3>Contact WREE</h3>
+    <section class="contact-section border-1 p-1">
+        <h3 class="mt-0">Contact WREE</h3>
         <span class="font-bold">Address</span>
         <address>
             1808 Hylan Blvd. Suite 1009<br>Staten Island, New York 10305
@@ -42,4 +40,9 @@
         <span class="font-bold d-block">Phone</span>
         <a href="tel:501-492-6720">+1 (501) 492-6720</a>
     </section>
+    <?php if (is_single()): ?>
+        <section class="tag-section border-1 p-1">
+            
+        </section>
+    <?php endif; ?>
 </aside>

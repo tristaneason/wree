@@ -39,7 +39,7 @@ $author_posts = wp_get_recent_posts([
                     <a href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=&description=<?php the_excerpt(); ?>">
+                    <a href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=&description=<?php the_excerpt(); ?>" target="_blank">
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
