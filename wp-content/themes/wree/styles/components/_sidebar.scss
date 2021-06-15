@@ -56,5 +56,26 @@
                 margin-top: 1rem;
             }
         }
+        &.tag-section {
+            .tag {
+                background: $primary;
+                border-radius: .25rem;
+                color: $light;
+                display: inline-block;
+                font-size: .875rem;
+                letter-spacing: .65px;
+                line-height: 1;
+                padding: .5rem;
+                margin: 0 .5rem .5rem 0;
+                transition: .25s;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:hover {
+                    background: darken($primary, 10%);
+                    box-shadow: $shadowSmall;
+                }
+            }
+        }
     }
 }

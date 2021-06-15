@@ -12,8 +12,7 @@ $all_posts = get_posts([
 
 <main id="templateArticles">
     <section class="container grid thirds">
-        <?php foreach ($all_posts as $article): ?>
-            <?php
+        <?php foreach ($all_posts as $article):
             $post_date = date('F j, Y', strtotime($article->post_date));
             ?>
             <article class="card">
@@ -25,12 +24,14 @@ $all_posts = get_posts([
                     </div>
                 </header>
                 <div class="">
-                    <h2>
+                    <span class="category">
+                        <?= get_the_category($article->ID)[0]->name; ?>
+                    </span>
+                    <h2 class="mt-0">
                         <a href="<?= get_permalink($article->ID); ?>">
                             <?= $article->post_title; ?>
                         </a>
                     </h2>
-                    <span class="category"><?= get_the_category($article->ID)[0]->name; ?></span>
                     <span class="date"><?= $post_date; ?></span>
                     <span class="name">by <a href="<?= get_author_posts_url($article->post_author); ?>"><?= get_the_author_meta('display_name', $article->post_author); ?></a></span>
                     <p><?= $article->post_excerpt; ?></p>

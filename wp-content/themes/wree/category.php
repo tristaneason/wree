@@ -19,7 +19,7 @@
                         </div>
                     </header>
                     <div class="">
-                        <h2>
+                        <h2 class="mt-0">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h2>
                         <span class="date"><?= $post_date; ?></span>

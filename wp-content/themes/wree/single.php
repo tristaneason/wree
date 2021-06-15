@@ -12,10 +12,11 @@ $author_desc = get_the_author_meta('description');
 $author_name = get_the_author_meta('display_name');
 $author_avatar = get_avatar_url($author_id, $th_size);
 $author_posts = wp_get_recent_posts([
-    'author' => get_the_author_meta('ID'),
+    'author' => $author_id,
     'numberposts' => 3,
     'post_status' => 'publish'
 ]);
+$article_tags = get_the_tags();
 ?>
 
 <main id="article">

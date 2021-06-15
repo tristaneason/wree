@@ -19,6 +19,13 @@
             <?php endforeach; ?>
         </section>
     <?php endif; ?>
+    <?php if (is_author()): ?>
+        <section class="author-bio">
+            <h3 class="mt-0">About <?php the_author(); ?></h3>
+            <img src="<?= $author_avatar; ?>" alt="<?php the_author(); ?>" class="author-thumb">
+            <p class="author-description"><?= $author_desc; ?></p>
+        </section>
+    <?php endif; ?>
     <section class="meeting-section border-1 p-1">
         <h3 class="mt-0">Monthly Meetings</h3>
         <p class="mt-0">Join us! Monthly Meetings via Zoom<br>at 8:30 PM EDT</p>
@@ -40,9 +47,14 @@
         <span class="font-bold d-block">Phone</span>
         <a href="tel:501-492-6720">+1 (501) 492-6720</a>
     </section>
-    <?php if (is_single()): ?>
+    <?php if (is_single() && $article_tags): ?>
         <section class="tag-section border-1 p-1">
-            
+            <h3 class="mt-0">Tags</h3>
+            <?php foreach ($article_tags as $tag): ?>
+                <a href="<?= get_tag_link($tag->term_id); ?>" class="tag">
+                    <?= $tag->name; ?>
+                </a>
+            <?php endforeach; ?>
         </section>
     <?php endif; ?>
 </aside>
