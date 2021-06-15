@@ -6,7 +6,9 @@ if (!defined('ABSPATH')) exit;
 
 
 use MailPoet\Entities\NewsletterEntity;
+use MailPoet\InvalidStateException;
 use MailPoet\Models\Newsletter;
+use MailPoet\Newsletter\NewslettersRepository;
 use MailPoet\Settings\SettingsController;
 use MailPoet\WooCommerce\TransactionalEmails\Renderer;
 use MailPoet\WP\Functions as WPFunctions;
@@ -21,14 +23,19 @@ class TransactionalEmailHooks {
   /** @var Renderer */
   private $renderer;
 
+  /** @var NewslettersRepository */
+  private $newsletterRepository;
+
   public function __construct(
     WPFunctions $wp,
     SettingsController $settings,
-    Renderer $renderer
+    Renderer $renderer,
+    NewslettersRepository $newsletterRepository
   ) {
     $this->wp = $wp;
     $this->settings = $settings;
     $this->renderer = $renderer;
+    $this->newsletterRepository = $newsletterRepository;
   }
 
   public function useTemplateForWoocommerceEmails() {
@@ -40,7 +47,13 @@ class TransactionalEmailHooks {
       $this->wp->removeAction('woocommerce_email_header', $emailHeaderCallback);
       $this->wp->removeAction('woocommerce_email_footer', $emailFooterCallback);
       $this->wp->addAction('woocommerce_email_header', function($emailHeading) {
-        $this->renderer->render($this->getNewsletter(), $emailHeading);
+        $newsletterEntity = $this->getNewsletter();
+        // Temporary load old model until we refactor renderer
+        $newsletterModel = Newsletter::findOne($newsletterEntity->getId());
+        if (!$newsletterModel instanceof Newsletter) {
+          throw new InvalidStateException('WooCommerce email template is missing!');
+        }
+        $this->renderer->render($newsletterModel, $emailHeading);
         echo $this->renderer->getHTMLBeforeContent($emailHeading);
       });
       $this->wp->addAction('woocommerce_email_footer', function() {
@@ -50,29 +63,34 @@ class TransactionalEmailHooks {
     });
   }
 
-  private function getNewsletter() {
-    return Newsletter::findOne($this->settings->get(TransactionalEmails::SETTING_EMAIL_ID));
+  private function getNewsletter(): NewsletterEntity {
+    $newsletter = $this->newsletterRepository->findOneById($this->settings->get(TransactionalEmails::SETTING_EMAIL_ID));
+    if (!$newsletter instanceof NewsletterEntity) {
+      throw new InvalidStateException('WooCommerce email template is missing!');
+    }
+    return $newsletter;
   }
 
-  public function enableEmailSettingsSyncToWooCommerce() {
-    $this->wp->addFilter('mailpoet_api_newsletters_save_after', [$this, 'syncEmailSettingsToWooCommerce']);
-  }
-
-  public function syncEmailSettingsToWooCommerce(array $newsletterData) {
-    if ($newsletterData['type'] !== NewsletterEntity::TYPE_WC_TRANSACTIONAL_EMAIL) {
-      return $newsletterData;
+  public function overrideStylesForWooEmails() {
+    // Don't override anything if woo email template is not set
+    if (empty($this->settings->get(TransactionalEmails::SETTING_EMAIL_ID))) {
+      return;
     }
-
-    $styles = $newsletterData['body']['globalStyles'];
-    $optionsToSync = [
-      'woocommerce_email_background_color' => $styles['body']['backgroundColor'],
-      'woocommerce_email_base_color' => $styles['woocommerce']['brandingColor'],
-      'woocommerce_email_body_background_color' => $styles['wrapper']['backgroundColor'],
-      'woocommerce_email_text_color' => $styles['text']['fontColor'],
-    ];
-    foreach ($optionsToSync as $wcName => $value) {
-      $this->wp->updateOption($wcName, $value);
-    }
-    return $newsletterData;
+    $this->wp->addAction('option_woocommerce_email_background_color', function($value) {
+      $newsletter = $this->getNewsletter();
+      return $newsletter->getGlobalStyle('body', 'backgroundColor') ?? $value;
+    });
+    $this->wp->addAction('option_woocommerce_email_base_color', function($value) {
+      $newsletter = $this->getNewsletter();
+      return $newsletter->getGlobalStyle('woocommerce', 'brandingColor') ?? $value;
+    });
+    $this->wp->addAction('option_woocommerce_email_body_background_color', function($value) {
+      $newsletter = $this->getNewsletter();
+      return $newsletter->getGlobalStyle('wrapper', 'backgroundColor') ?? $value;
+    });
+    $this->wp->addAction('option_woocommerce_email_text_color', function($value) {
+      $newsletter = $this->getNewsletter();
+      return $newsletter->getGlobalStyle('text', 'fontColor') ?? $value;
+    });
   }
 }

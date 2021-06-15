@@ -156,6 +156,7 @@ class ContainerConfigurator implements IContainerConfigurator {
     // Cron workers
     $container->autowire(\MailPoet\Cron\Workers\Scheduler::class)->setPublic(true);
     $container->autowire(\MailPoet\Cron\Workers\SendingQueue\SendingQueue::class)->setPublic(true);
+    $container->autowire(\MailPoet\Cron\Workers\SendingQueue\Tasks\Links::class)->setPublic(true);
     $container->autowire(\MailPoet\Cron\Workers\StatsNotifications\Worker::class)->setPublic(true);
     $container->autowire(\MailPoet\Cron\Workers\StatsNotifications\AutomatedEmails::class)->setPublic(true);
     $container->autowire(\MailPoet\Cron\Workers\KeyCheck\SendingServiceKeyCheck::class)->setPublic(true);
@@ -263,6 +264,7 @@ class ContainerConfigurator implements IContainerConfigurator {
     $container->autowire(\MailPoet\Subscribers\SubscriberSaveController::class)->setPublic(true);
     $container->autowire(\MailPoet\Subscribers\SubscriberSubscribeController::class)->setPublic(true);
     $container->autowire(\MailPoet\Subscribers\ImportExport\ImportExportRepository::class)->setPublic(true);
+    $container->autowire(\MailPoet\Subscribers\ImportExport\PersonalDataExporters\NewslettersExporter::class)->setPublic(true);
     $container->autowire(\MailPoet\Subscribers\Statistics\SubscriberStatisticsRepository::class);
     // Segments
     $container->autowire(\MailPoet\Segments\WooCommerce::class)->setPublic(true);
@@ -323,6 +325,8 @@ class ContainerConfigurator implements IContainerConfigurator {
     $container->autowire(\MailPoet\Newsletter\NewslettersRepository::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\AutomaticEmailsRepository::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\NewsletterHtmlSanitizer::class)->setPublic(true);
+    $container->autowire(\MailPoet\Newsletter\Url::class)->setPublic(true);
+    $container->autowire(\MailPoet\Newsletter\Links\Links::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\Listing\NewsletterListingRepository::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\Options\NewsletterOptionsRepository::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\Options\NewsletterOptionFieldsRepository::class)->setPublic(true);
@@ -334,6 +338,7 @@ class ContainerConfigurator implements IContainerConfigurator {
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Footer::class);
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Header::class);
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Image::class);
+    $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Placeholder::class);
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Renderer::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Social::class);
     $container->autowire(\MailPoet\Newsletter\Renderer\Blocks\Spacer::class);
@@ -356,6 +361,7 @@ class ContainerConfigurator implements IContainerConfigurator {
     $container->autowire(\MailPoet\Newsletter\Sending\SendingQueuesRepository::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\ViewInBrowser\ViewInBrowserController::class)->setPublic(true);
     $container->autowire(\MailPoet\Newsletter\ViewInBrowser\ViewInBrowserRenderer::class)->setPublic(true);
+    $container->autowire(\MailPoet\Statistics\GATracking::class)->setPublic(true);
     // Newsletter templates
     $container->autowire(\MailPoet\NewsletterTemplates\NewsletterTemplatesRepository::class)->setPublic(true);
     // Util
@@ -376,6 +382,7 @@ class ContainerConfigurator implements IContainerConfigurator {
     $container->autowire(\MailPoet\WooCommerce\TransactionalEmails::class)->setPublic(true);
     $container->autowire(\MailPoet\WooCommerce\TransactionalEmails\Template::class)->setPublic(true);
     $container->autowire(\MailPoet\WooCommerce\TransactionalEmails\Renderer::class)->setPublic(true);
+    $container->autowire(\MailPoet\WooCommerce\TransactionalEmails\ContentPreprocessor::class)->setPublic(true);
     // WordPress
     $container->autowire(\MailPoet\WP\Emoji::class)->setPublic(true);
     $container->autowire(\MailPoet\WP\Functions::class)->setPublic(true);
