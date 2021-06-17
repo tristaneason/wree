@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: calc(60vh);
+    height: calc(65vh);
     justify-content: center;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -13,7 +13,7 @@
     }
     &:before {
         content: '';
-        background: rgba(58, 59, 75, .65);
+        background: rgba(58, 59, 75, .25);
         height: 100%;
         position: absolute;
         width: 100%;
@@ -30,7 +30,12 @@
         }
         h1 {
             color: $light;
+            font-weight: 700;
             margin-top: 0;
+            text-shadow: 0 2px 3px $dark;
+            @media (min-width: $lg) {
+                font-size: 2.5rem;
+            }
             &:hover {
                 text-decoration: underline;
             }
@@ -38,10 +43,12 @@
         h2 {
             color: $light;
             font-family: $fontBody;
-            font-size: 1.25rem;
-            font-weight: 400;
+            font-size: 1.5rem;
+            font-weight: 600;
             line-height: 1.5;
+            letter-spacing: .5px;
             margin-top: .25rem;
+            text-shadow: 0 2px 3px $dark;
             @media (min-width: $md) {
                 width: 65%;
             }
@@ -49,9 +56,32 @@
                 width: 50%;
             }
         }
+        .button {
+            border: 1px solid $white;
+        }
         .cta {
             color: $light;
             text-decoration: underline;
+        }
+    }
+    .statement {
+        @extend .featured-article;
+        @media (min-width: $md) {
+            text-align: center;
+        }
+        h1 {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        h2 {
+            margin: .25rem auto 1rem;
+            @media (min-width: $md) {
+                width: 100%;
+            }
+        }
+        .button {
+            box-shadow: none;
         }
     }
 }

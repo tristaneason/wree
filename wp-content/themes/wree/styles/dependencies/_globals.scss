@@ -1,3 +1,13 @@
+:root {
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --tertiary: #{$tertiary};
+    --success: #{$success};
+    --danger: #{$danger};
+    --warning: #{$warning};
+    --pink: #{$pink};
+}
+
 *,
 *:after,
 *:before {
@@ -34,6 +44,7 @@ h5, .h5,
 h6, .h6 {
     color: $dark;
     font-family: $fontHeading;
+    font-weight: 550;
     letter-spacing: .5px;
     line-height: 1.5;
 }
@@ -116,6 +127,19 @@ section[id] {
         @media (min-width: 783px) {
             display: block;
         }
+    }
+}
+
+.banner-separator {
+    background-color: $tertiary;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    img {
+        height: 500px;
+        object-fit: cover;
+        width: 100%;
     }
 }
 

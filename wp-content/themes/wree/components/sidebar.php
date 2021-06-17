@@ -29,7 +29,7 @@
     <section class="meeting-section border-1 p-1">
         <h3 class="mt-0">Monthly Meetings</h3>
         <p class="mt-0">Join us! Monthly Meetings via Zoom<br>at 8:30 PM EDT</p>
-        <p>Our next meeting is July DD, 2021</p>
+        <p>Our next meeting is July 14, 2021</p>
         <a href="/contact-wree/" class="button small">Contact us to join</a>
     </section>
     <section class="about-section border-1 p-1">

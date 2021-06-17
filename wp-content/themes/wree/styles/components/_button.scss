@@ -8,6 +8,7 @@
     font-family: $fontHeading;
     font-size: 1rem;
     letter-spacing: 1px;
+    line-height: 1;
     margin: .25rem;
     outline: 0;
     padding: 1rem 2rem;
@@ -34,6 +35,6 @@
     }
     &.large {
         font-size: 1.25rem;
-        padding: 1rem 3rem;
+        padding: 1.25rem 3rem;
     }
 }
