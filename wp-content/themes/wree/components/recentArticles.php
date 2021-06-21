@@ -14,7 +14,7 @@ $recentPosts = get_posts([
         <div class="grid two-thirds">
             <div class="articles-list">
                 <?php foreach ($recentPosts as $recentPost): ?>
-                    <article class="article-snippet flex persist-row align-center space-between">
+                    <article class="article-snippet flex align-center space-between">
                         <div class="padding">
                             <h3 class="h5">
                                 <a href="<?= get_permalink($recentPost->ID); ?>">

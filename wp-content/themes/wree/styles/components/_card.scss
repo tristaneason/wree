@@ -1,7 +1,7 @@
 .card {
     background: $light;
     border: 1px solid $lightGrey;
-    border-radius: .25rem;
+    border-radius: .5rem;
     box-shadow: $shadowSmall;
     margin-bottom: 1rem;
     overflow: hidden;
@@ -17,7 +17,11 @@
             box-shadow: $shadowSmall;
             object-fit: cover;
             height: 150px;
+            transition: .25s;
             width: 100%;
+            &:hover {
+                box-shadow: $shadowMedium;
+            }
         }
     }
     .category {

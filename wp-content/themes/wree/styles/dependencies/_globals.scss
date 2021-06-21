@@ -26,6 +26,10 @@ body {
 a {
     color: $tertiary;
     text-decoration: none;
+    transition: .25s;
+    &:hover {
+        color: lighten($tertiary, 10%);
+    }
 }
 
 address {
@@ -44,7 +48,7 @@ h5, .h5,
 h6, .h6 {
     color: $dark;
     font-family: $fontHeading;
-    font-weight: 550;
+    font-weight: 500;
     letter-spacing: .5px;
     line-height: 1.5;
 }
@@ -78,14 +82,14 @@ h3,
 h4,
 .h4 {
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: 500;
     margin: 1rem 0 .5rem;
 }
 
 h5,
 .h5 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     margin: 1rem 0 .5rem;
 }
 
@@ -93,7 +97,7 @@ h6,
 .h6 {
     color: $medGrey;
     font-size: .85rem;
-    font-weight: 600;
+    font-weight: 500;
     margin: 1rem 0 .5rem;
 }
 

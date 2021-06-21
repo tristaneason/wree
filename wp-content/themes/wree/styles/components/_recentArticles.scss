@@ -1,11 +1,23 @@
 #componentRecentArticles {
     padding: 2rem 0 3rem;
     .article-snippet {
+        background: $white;
         border: 1px solid $lightGrey;
         border-radius: .5rem;
         box-shadow: $shadowSmall;
+        flex-direction: column-reverse;
         margin-bottom: 1rem;
         padding: .75rem;
+        text-align: center;
+        transition: .25s;
+        @media (min-width: $sm) {
+            flex-direction: row;
+            text-align: left;
+        }
+        &:hover {
+            // background: $lightGrey2;
+            // border-color: $primary;
+        }
         .padding {
             padding-right: 1rem;
             @media (min-width: $sm) {
@@ -16,7 +28,7 @@
             }
         }
         .thumbnail-link {
-            display: none;
+            display: block;
             height: 100%;
             @media (min-width: $sm) {
                 display: inline;
@@ -25,16 +37,19 @@
                 height: 150px;
                 width: 180px;
             }
-        }
-        .thumbnail {
-            border-radius: .5rem;
-            box-shadow: $shadowSmall;
-            height: 100%;
-            object-fit: cover;
-            width: 200px;
-            @media (min-width: $lg) {
-                height: 150px;
-                width: 180px;
+            .thumbnail {
+                border-radius: .5rem;
+                box-shadow: $shadowSmall;
+                height: 200px;
+                object-fit: cover;
+                width: 100%;
+                @media (min-width: $md) {
+                    width: 200px;
+                }
+                @media (min-width: $lg) {
+                    height: 150px;
+                    width: 180px;
+                }
             }
         }
     }
