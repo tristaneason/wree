@@ -38,7 +38,7 @@
         <section class="container grid two-thirds">
             <div class="">
                 <h1 class="h3" style="margin-bottom: 3rem">There are currently no articles for this category yet. We'll be working on getting more out as the time goes by.</h1>
-                <img src="/wp-content/uploads/2021/06/homes-for-families-banner.jpg" alt="Homes for Families Banner" class="img-responsive">
+                <img src="<?= get_stylesheet_directory_uri() . '/images/homes-for-families-banner.jpg'; ?>" alt="Homes for Families Banner" class="img-responsive">
             </div>
             <?php include theme_root('/components/sidebar.php'); ?>
         </section>
