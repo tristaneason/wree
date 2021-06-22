@@ -1,5 +1,7 @@
 #featuredCards {
+    box-shadow: $shadowLarge;
     padding: 2rem 0;
+    z-index: 3;
     .card {
         img {
             height: 300px;

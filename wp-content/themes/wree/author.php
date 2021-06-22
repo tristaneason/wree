@@ -1,5 +1,5 @@
 <?php
-// Template Name: Author
+// Template: Author
 
 $author_ID = get_the_author_meta('ID');
 $author_avatar = get_avatar_url($author_ID, ['size' => '200']);
