@@ -57,7 +57,7 @@ $article_tags = get_the_tags();
                     <h4>More articles by <a href="<?= $author_url; ?>"><?= $author_name; ?></a></h4>
                     <?php foreach ($author_posts as $author_post): ?>
                         <div class="author-article flex align-center">
-                            <a href="<?php the_permalink($author_post['ID']); ?>" class="mr-05">
+                            <a href="<?php the_permalink($author_post['ID']); ?>" class="mr-05 flex">
                                 <img src="<?= get_the_post_thumbnail_url($author_post['ID']); ?>" alt="<?= $author_post['post_title']; ?> Thumbnail" class="img-responsive">
                             </a>
                             <div class="">
