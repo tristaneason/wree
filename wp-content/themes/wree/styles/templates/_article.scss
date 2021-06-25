@@ -21,6 +21,11 @@
         .post-body {
             font-size: 1.125rem;
             padding-bottom: 2rem;
+            p {
+                a {
+                    border-botto: 1px solid $tertiary;
+                }
+            }
             img {
                 display: block;
                 height: auto;
