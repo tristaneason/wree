@@ -43,7 +43,7 @@ $header_static_args = [
             <?php include theme_root('/components/logo.php'); ?>
         </div>
         <div id="headerTopRight" class="flex align-center">
-            <a href="/wree-affiliates/">Affiliates</a>
+            <a href="/wree-affiliates/">Affiliates/Links</a>
             <a href="/articles/">Articles</a>
             <a href="/events/">Events</a>
             <a href="/contact-wree/" class="button small">Contact</a>
