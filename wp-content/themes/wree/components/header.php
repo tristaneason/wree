@@ -24,7 +24,7 @@ $header_static_args = [
         <h3>Main Pages</h3>
         <ul class="static-nav">
             <?php wp_nav_menu($header_static_args); ?>
-            <li><a href="/current-actions/">Current Actions</a></li>
+            <li><a href="/wree-affiliates/">Affiliates</a></li>
             <li><a href="/articles/">Articles</a></li>
             <li><a href="/events/">Events</a></li>
             <li><a href="/contact-wree/">Contact</a></li>
