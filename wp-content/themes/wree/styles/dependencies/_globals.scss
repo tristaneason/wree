@@ -40,6 +40,31 @@ address {
     }
 }
 
+blockquote,
+.blockquote {
+    border-left: 6px solid $primary;
+    color: $medGrey;
+    font-size: 1.125rem;
+    letter-spacing: .5px;
+    margin: 0 auto;
+    padding: 1rem 0 1rem;
+    @media (min-width: $sm) {
+        padding-left: 1.25rem;
+    }
+    @media (min-width: $md) {
+        padding-left: 1.5rem;
+    }
+    @media (min-width: $lg) {
+        padding-left: 1.75rem;
+    }
+    @media (min-width: $xl) {
+        padding-left: 2rem;
+    }
+    p {
+        margin: 0;
+    }
+}
+
 figcaption {
     margin-left: auto;
     margin-right: auto;

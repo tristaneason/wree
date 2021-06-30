@@ -25,7 +25,14 @@ add_theme_support('post-thumbnails', ['post', 'page']);
 // Disable Editor for Custom Templates
 function remove_editor() {
     if (isset($_GET['post'])) {
-        remove_post_type_support('page', 'editor');
+        $template = get_post_meta($_GET['post'], '_wp_page_template', true);
+        switch ($template) {
+            case 'template-home.php':
+            case 'template-contact.php':
+            case 'template-articles.php':
+                remove_post_type_support('page', 'editor');
+            break;
+        }
     }
 }
 add_action('init', 'remove_editor');

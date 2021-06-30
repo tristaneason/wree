@@ -10,8 +10,8 @@
             <header class="post-header">
                 <h1><?php the_title(); ?></h1>
             </header>
-            <div class="">
-
+            <div class="post-body">
+                <?php the_content(); ?>
             </div>
             <footer class="post-footer">
 

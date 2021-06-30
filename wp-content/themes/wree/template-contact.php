@@ -22,7 +22,7 @@
                 <span class="font-bold d-block">Email</span>
                 <a href="mailto:wree-info@usvanguard.net">wree-info@usvanguard.net</a>
                 <span class="font-bold d-block">Phone</span>
-                <a href="tel:501-492-6720">+1 (502) 492-6720</a>
+                <a href="tel:501-492-6720">+1 (501) 492-6720</a>
             </footer>
         </article>
     </section>

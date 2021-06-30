@@ -9,6 +9,7 @@
         <article class="">
             <header class="post-header">
                 <h1><?php the_title(); ?></h1>
+                <img src="<?= get_the_post_thumbnail_url(); ?>" alt="About WREE">
             </header>
             <div class="">
                 <h2><?php the_field('who_we_are_heading'); ?></h2>
