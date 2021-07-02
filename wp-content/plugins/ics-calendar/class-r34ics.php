@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) { exit; }
 
 class R34ICS {
 
-	public $version = '7.7.1.2';
+	public $version = '7.7.2.1';
 
 	public $colors = array(
 		'white' => '#ffffff',		// rgb(255,255,255)
@@ -982,24 +982,24 @@ class R34ICS {
 		if (!filter_var($url, FILTER_VALIDATE_URL)) {
 			return false;
 		}
+		
+		// Google Drive image links have an image MIME type, but require login and don't load the image directly, so we treat them as links
+		if (strpos($url, 'drive.google.com/file') !== false) {
+			return '<a href="' . esc_url($url) . '" ' . (!r34ics_domain_match($url) ? ' target="_blank" rel="noopener noreferrer nofollow"' : '') . '>' . $filename . '</a>';
+		}
 			
 		// Return images as an image tag (MIME type MUST be passed or this may not actually be a direct image link (e.g. a Google Drive preview link)
-		elseif (!empty($mime) && strpos($mime, 'image/') === 0) { 
+		if (!empty($mime) && strpos($mime, 'image/') === 0) { 
 			return '<img src="' . esc_url($url) . '" alt="" style="position: relative; height: auto; width: 100%;" />';
 		}
 		
 		// Return other files with a MIME type set, and not equal to a text format, as downloads
-		elseif (!empty($mime) && strpos($mime, 'text/') === false) {
+		if (!empty($mime) && strpos($mime, 'text/') === false) {
 			return '<a href="' . esc_url($url) . '" download="' . $filename . '" rel="noopener noreferrer nofollow">' . $filename . '</a>';
 		}
 		
 		// Return others (no MIME type, or a "text/" mime type) as clickable links
-		else {
-			return '<a href="' . esc_url($url) . '" ' . (!r34ics_domain_match($url) ? ' target="_blank" rel="noopener noreferrer nofollow"' : '') . '>' . $filename . '</a>';
-		}
-		
-		// Do nothing with other files
-		return false;
+		return '<a href="' . esc_url($url) . '" ' . (!r34ics_domain_match($url) ? ' target="_blank" rel="noopener noreferrer nofollow"' : '') . '>' . $filename . '</a>';
 	}
 
 

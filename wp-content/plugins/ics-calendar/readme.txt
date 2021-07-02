@@ -1,11 +1,11 @@
 === ICS Calendar ===
 Contributors: room34
 Donate link: https://room34.com/payments
-Tags: calendar, iCal, iCalendar, feed, embed calendar, Google Calendar, Outlook, calendar feed, event, events, booking, vacation, holiday, schedule, gig list, church calendar, Airbnb, rental, availability, sync
+Tags: calendar, iCal, ICS, iCalendar, Google Calendar, Outlook, Office 365, Mac calendar, iOS calendar, calendar feed, feed, embed calendar, event, events, booking, vacation, holiday, schedule, gig list, church calendar, Airbnb, rental, availability, sync
 Requires at least: 4.9
 Tested up to: 5.7.2
 Requires PHP: 7.0.0
-Stable tag: 7.7.1.2
+Stable tag: 7.7.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,14 @@ The paid [ICS Calendar Pro](https://icscalendar.com) add-on includes additional 
 == Screenshots ==
 
 == Changelog ==
+
+= 7.7.2.1 - 2021.06.24 =
+
+* Modified Google Drive image handling to be a link rather than nothing; minor refactoring of other attachment link handling.
+
+= 7.7.2 - 2021.06.23 =
+
+* Added logic to prevent rendering of invalid `<img>` tags containing a `src` value that is a link to a Google Drive file. Images attached to events on Google Calendar are treated as Google Drive file links rather than direct images and are not accessible without logging into a Google account that is authorized to view the image. We are looking for a workaround, but in the meantime this will prevent these types of broken images from appearing in rendered calendars.
 
 = 7.7.1.2 - 2021.06.13 =
 

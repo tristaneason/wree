@@ -30,7 +30,6 @@ return array(
     'Automattic\\Jetpack\\Status' => $vendorDir . '/automattic/jetpack-status/src/class-status.php',
     'Automattic\\Jetpack\\Terms_Of_Service' => $vendorDir . '/automattic/jetpack-terms-of-service/src/class-terms-of-service.php',
     'Automattic\\Jetpack\\Tracking' => $vendorDir . '/automattic/jetpack-tracking/src/class-tracking.php',
-    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Jetpack_IXR_Client' => $vendorDir . '/automattic/jetpack-connection/legacy/class-jetpack-ixr-client.php',
     'Jetpack_IXR_ClientMulticall' => $vendorDir . '/automattic/jetpack-connection/legacy/class-jetpack-ixr-clientmulticall.php',
     'Jetpack_Options' => $vendorDir . '/automattic/jetpack-options/legacy/class-jetpack-options.php',
