@@ -7,9 +7,14 @@
         @media (min-width: $lg) {
             padding-right: 1rem;
         }
+        figure {
+            margin-left: 0;
+            margin-right: 0;
+        }
         img {
             border-radius: 1rem;
             height: auto;
+            margin: 0 auto;
             width: 100%;
             &.featured-image {
                 box-shadow: $shadowSmall;
