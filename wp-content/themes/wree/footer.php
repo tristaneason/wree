@@ -44,18 +44,22 @@ $nav_args_2 = [
             <h3>Contact Info</h3>
             <div class="flex column">
                 <h4 class="margin-top">Phone</h4>
-                <a href="tel:501-492-6720">+1 (501) 492-6720</a>
+                <a href="tel:<?= get_field('phone', 'option'); ?>">
+                    <?= get_field('phone', 'option'); ?>
+                </a>
             </div>
             <div class="flex column">
                 <h4>Email</h4>
-                <a href="mailto:wree-info@usvangaurd.net">wree-info@usvangaurd.net</a>
+                <a href="mailto:<?= get_field('email', 'option'); ?>">
+                    <?= get_field('email', 'option'); ?>
+                </a>
             </div>
             <div class="flex column">
                 <h4>Address</h4>
                 <address>
                     <a href="https://goo.gl/maps/Zc8RtgcKGQ5fNTHy7" target="_blank">
-                        <span>1808 Hylan Blvd. Suite 1009</span>
-                        <span>Staten Island, New York 10305</span>
+                        <?= get_field('street', 'option'); ?><br>
+                        <?= get_field('city', 'option'); ?>, <?= get_field('state', 'option'); ?> <?= get_field('zip', 'option'); ?>
                     ​</a>
                 </address>
             </div>

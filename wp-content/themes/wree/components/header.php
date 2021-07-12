@@ -1,8 +1,15 @@
 <?php
 // Component: Header
 
-$header_static_args = [
-    'menu' => 'Header Static Pages',
+$headerStaticArgs1 = [
+    'menu' => 'Header Static Pages 1',
+    'container' => false,
+    'items_wrap' => '%3$s',
+    'depth' => 2,
+];
+
+$headerStaticArgs2 = [
+    'menu' => 'Header Static Pages 2',
     'container' => false,
     'items_wrap' => '%3$s',
     'depth' => 2,
@@ -23,11 +30,9 @@ $header_static_args = [
     <section id="mobileNavContainer" class="container hidden-lg-xl hidden">
         <h3>Main Pages</h3>
         <ul class="static-nav">
-            <?php wp_nav_menu($header_static_args); ?>
-            <li><a href="/wree-affiliates/">Affiliates</a></li>
-            <li><a href="/articles/">Articles</a></li>
-            <li><a href="/events/">Events</a></li>
-            <li><a href="/contact-wree/">Contact</a></li>
+            <?php wp_nav_menu($headerStaticArgs1); ?>
+            <?php wp_nav_menu($headerStaticArgs2); ?>
+            <li><a href="/donate-to-wree/">Donate</a></li>
         </ul>
         <h3>Article Categories</h3>
         <?php include theme_root('/components/nav.php'); ?>
@@ -37,16 +42,14 @@ $header_static_args = [
     <!-- Desktop Nav Start -->
     <section id="headerTopContainer" class="container grid thirds">
         <div id="headerTopLeft" class="flex align-center">
-            <ul><?php wp_nav_menu($header_static_args); ?></ul>
+            <ul><?php wp_nav_menu($headerStaticArgs1); ?></ul>
         </div>
         <div id="headerTopCenter">
             <?php include theme_root('/components/logo.php'); ?>
         </div>
-        <div id="headerTopRight" class="flex align-center">
-            <a href="/wree-affiliates/">Affiliates/Links</a>
-            <a href="/articles/">Articles</a>
-            <a href="/events/">Events</a>
-            <a href="/contact-wree/" class="button small">Contact</a>
+        <div id="headerTopRight" class="flex align-center justify-end">
+            <ul><?php wp_nav_menu($headerStaticArgs2); ?></ul>
+            <a href="/donate-to-wree/" class="button small">Donate</a>
         </div>
     </section>
     <section id="headerBottomContainer" class="container">

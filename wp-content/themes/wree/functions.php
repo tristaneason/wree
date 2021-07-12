@@ -30,6 +30,7 @@ function remove_editor() {
             case 'template-home.php':
             case 'template-contact.php':
             case 'template-articles.php':
+            case 'template-donate.php':
                 remove_post_type_support('page', 'editor');
             break;
         }
@@ -45,4 +46,22 @@ function theme_root($path) {
 // Disable admin bar on mobile
 if (wp_is_mobile()) {
     add_filter('show_admin_bar', '__return_false');
+}
+
+// Add ACF Options page
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page([
+        'page_title' => 'WREE Contact Information',
+        'menu_title' => 'Contact Info',
+        'menu_slug' => 'contact-info',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+    ]);
+    // acf_add_options_page([
+    //     'page_title' => '',
+    //     'menu_title' => '',
+    //     'menu_slug' => '',
+    //     'capability' => 'edit_posts',
+    //     'redirect' => false,
+    // ]);
 }

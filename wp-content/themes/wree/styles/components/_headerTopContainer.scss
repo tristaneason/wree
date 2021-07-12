@@ -9,7 +9,8 @@
     }
 }
 
-#headerTopContainer #headerTopLeft {
+#headerTopContainer #headerTopLeft,
+#headerTopContainer #headerTopRight {
     ul {
         display: flex;
         padding-left: 0;
@@ -57,18 +58,5 @@
 }
 
 #headerTopContainer #headerTopRight {
-    justify-content: center;
-    @media (min-width: $lg) {
-        justify-content: flex-end;
-    }
-    // .search {
-    //     color: $medGrey;
-    //     &:hover {
-    //         cursor: text;
-    //     }
-    // }
-    a:not(.button) {
-        font-size: .85rem;
-        margin-right: 1rem;
-    }
+    
 }
