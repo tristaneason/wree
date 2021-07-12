@@ -42,6 +42,7 @@
         <?= get_field('meeting_description', 'option'); ?>
         <a href="<?= get_field('meeting_button_url', 'option'); ?>" class="button small" target="_blank">
             <?= get_field('meeting_button_text', 'option'); ?>
+            <i class="fas fa-external-link-alt"></i>
         </a>
     </section>
     <section class="about-section border-1 p-1">
