@@ -27,25 +27,42 @@
         </section>
     <?php endif; ?>
     <section class="meeting-section border-1 p-1">
-        <h3 class="mt-0">Monthly Meetings</h3>
-        <p class="mt-0">Join us! Monthly Meetings via Zoom<br>at 8:30 PM EDT</p>
-        <p>Our next meeting is July 14, 2021</p>
-        <a href="/contact-wree/" class="button small">Contact us to join</a>
+        <h3 class="mt-0">Next WREE Event</h3>
+        <?= get_field('meeting_type'); ?>
+        <?php if (get_field('meeting_type', 'option') === 'Meeting'): ?>
+            <p class="bg-emphasis">Board meeting on Zoom</p>
+        <?php elseif (get_field('meeting_type', 'option') === 'Webinar'): ?>
+            <p class="bg-emphasis">Webinar on Zoom</p>
+        <?php else: ?>
+            <p class="bg-emphasis">Meeting on Zoom</p>
+        <?php endif; ?>
+        <b>Date</b>: <?= get_field('meeting_date', 'option'); ?>
+        <br>
+        <b>Time</b>: <?= get_field('meeting_time', 'option'); ?>
+        <?= get_field('meeting_description', 'option'); ?>
+        <a href="<?= get_field('meeting_button_url', 'option'); ?>" class="button small" target="_blank">
+            <?= get_field('meeting_button_text', 'option'); ?>
+        </a>
     </section>
     <section class="about-section border-1 p-1">
         <h3 class="mt-0">What We Do</h3>
-        <p>Still committed to Peace as our first priority, WREE focuses on the many social issues that prevent Peace and Prosperity for all. There are many issues that need as much support and activism from our members and friends that they can provide. Community Volunteerism is powerful.</p>
+        <?= get_field('what_we_do', 'option'); ?>
     </section>
     <section class="contact-section border-1 p-1">
         <h3 class="mt-0">Contact WREE</h3>
         <span class="font-bold">Address</span>
         <address>
-            1808 Hylan Blvd. Suite 1009<br>Staten Island, New York 10305
+            <?= get_field('street', 'option'); ?><br>
+            <?= get_field('city', 'option'); ?>, <?= get_field('state', 'option'); ?> <?= get_field('zip', 'option'); ?>
         </address>
         <span class="font-bold d-block">Email</span>
-        <a href="mailto:wree-info@usvanguard.net">wree-info@usvanguard.net</a>
+        <a href="mailto:<?= get_field('email', 'option'); ?>">
+            <?= get_field('email', 'option'); ?>
+        </a>
         <span class="font-bold d-block">Phone</span>
-        <a href="tel:501-492-6720">+1 (501) 492-6720</a>
+        <a href="tel:<?= get_field('phone', 'option'); ?>">
+            <?= get_field('phone', 'option'); ?>
+        </a>
     </section>
     <?php if (is_single() && $article_tags): ?>
         <section class="tag-section border-1 p-1">

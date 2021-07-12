@@ -40,7 +40,7 @@ $headerStaticArgs2 = [
     <!-- Mobile Nav End -->
 
     <!-- Desktop Nav Start -->
-    <section id="headerTopContainer" class="container grid thirds">
+    <section id="headerTopContainer" class="container">
         <div id="headerTopLeft" class="flex align-center">
             <ul><?php wp_nav_menu($headerStaticArgs1); ?></ul>
         </div>

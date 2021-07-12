@@ -189,6 +189,12 @@ section[id] {
     }
 }
 
+.bg-emphasis {
+    background-color: $secondary;
+    border-radius: .25rem;
+    font-weight: 700;
+}
+
 .border-1 {
     border: 1px solid $lightGrey;
     border-radius: .5rem;

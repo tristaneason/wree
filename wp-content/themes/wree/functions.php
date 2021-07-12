@@ -57,11 +57,18 @@ if (function_exists('acf_add_options_page')) {
         'capability' => 'edit_posts',
         'redirect' => false,
     ]);
-    // acf_add_options_page([
-    //     'page_title' => '',
-    //     'menu_title' => '',
-    //     'menu_slug' => '',
-    //     'capability' => 'edit_posts',
-    //     'redirect' => false,
-    // ]);
+    acf_add_options_page([
+        'page_title' => 'What We do',
+        'menu_title' => 'What We Do',
+        'menu_slug' => 'what-we-do',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+    ]);
+    acf_add_options_page([
+        'page_title' => 'Meeting Information',
+        'menu_title' => 'Meeting Info',
+        'menu_slug' => 'meeting-info',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+    ]);
 }

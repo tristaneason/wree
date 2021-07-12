@@ -1,17 +1,17 @@
 <?php
-// Template: Default
+// Template Name: Donate
 ?>
 
 <?php get_header(); ?>
 
-<main id="templateDefault">
+<main id="templateDonate">
     <section class="container grid two-thirds">
         <article class="">
             <header class="post-header">
                 <h1><?php the_title(); ?></h1>
             </header>
             <div class="post-body">
-                <?php the_content(); ?>
+                <h2>Coming soon</h2>
             </div>
             <footer class="post-footer">
 
