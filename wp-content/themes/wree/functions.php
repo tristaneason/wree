@@ -27,10 +27,11 @@ function remove_editor() {
     if (isset($_GET['post'])) {
         $template = get_post_meta($_GET['post'], '_wp_page_template', true);
         switch ($template) {
-            case 'template-home.php':
-            case 'template-contact.php':
+            case 'template-affiliates.php':
             case 'template-articles.php':
+            case 'template-contact.php':
             case 'template-donate.php':
+            case 'template-home.php':
                 remove_post_type_support('page', 'editor');
             break;
         }
