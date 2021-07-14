@@ -41,14 +41,16 @@
             }
         }
         &.meeting-section {
-            h3 {
-                margin-top: 0;
+            p {
+                @media (min-width: $md) {
+                    // text-align: justify;
+                }
             }
         }
         &.about-section {
             p {
                 @media (min-width: $md) {
-                    // text-align: justify;
+                    text-align: justify;
                 }
             }
         }
