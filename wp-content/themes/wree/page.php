@@ -11,6 +11,7 @@
                 <h1><?php the_title(); ?></h1>
             </header>
             <div class="post-body">
+                <img src="<?php the_post_thumbnail_url() ?>" class="featured-image img-responsive" alt="Image for <?php the_title(); ?>">
                 <?php the_content(); ?>
             </div>
             <footer class="post-footer">
