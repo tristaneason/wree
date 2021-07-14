@@ -170,7 +170,7 @@ class NF_Handlers_FieldsetRepeater
      * @param array $submission
      * @return boolean
      */
-    public function isFieldsetData(array $submission): bool
+    public function isFieldsetData(array $submission)
     {
         $return = true;
 
@@ -204,7 +204,7 @@ class NF_Handlers_FieldsetRepeater
      * @param string $reference
      * @return array
      */
-    public function parseSubmissionReference( $reference): array
+    public function parseSubmissionReference( $reference)
     {   
         $fieldset= $this->parseFieldsetFieldReference($reference);
         $fieldId=$fieldset['fieldId'];
