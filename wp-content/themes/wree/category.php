@@ -5,6 +5,9 @@
 <?php get_header(); ?>
 
 <main id="category">
+    <header class="container">
+        <h1 class="mt-0">Articles in <span class="bg-emphasis-primary"><?php single_cat_title(); ?></span></h1>
+    </header>
     <?php if (have_posts()): ?>
         <section class="container grid thirds">
             <?php while (have_posts()): ?>
@@ -37,7 +40,7 @@
     <?php else: ?>
         <section class="container grid two-thirds">
             <div class="">
-                <h1 class="h3" style="margin-bottom: 3rem">There are currently no articles for this category yet. We'll be working on getting more out as the time goes by.</h1>
+                <h2 class="h3" style="margin-bottom: 3rem">There are currently no articles for this category yet. We'll be working on getting more out as the time goes by.</h2>
                 <img src="<?= get_stylesheet_directory_uri() . '/images/homes-for-families-banner.jpg'; ?>" alt="Homes for Families Banner" class="img-responsive">
             </div>
             <?php include theme_root('/components/sidebar.php'); ?>

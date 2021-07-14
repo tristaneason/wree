@@ -193,6 +193,31 @@ section[id] {
     background-color: $secondary;
     border-radius: .25rem;
     font-weight: 700;
+    padding: .25rem .5rem;
+}
+
+.bg-emphasis-primary {
+    background-color: $primary;
+    border-radius: .25rem;
+    color: $white;
+    font-weight: 700;
+    padding: .25rem .5rem;
+}
+
+.bg-emphasis-secondary {
+    background-color: $primary;
+    border-radius: .25rem;
+    color: $white;
+    font-weight: 700;
+    padding: .25rem .5rem;
+}
+
+.bg-emphasis-tertiary {
+    background-color: $tertiary;
+    border-radius: .25rem;
+    color: $white;
+    font-weight: 700;
+    padding: .25rem .5rem;
 }
 
 .border-1 {
