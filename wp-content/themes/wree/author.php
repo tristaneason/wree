@@ -2,7 +2,7 @@
 // Template: Author
 
 $author_ID = get_the_author_meta('ID');
-$author_avatar = get_avatar_url($author_ID, ['size' => '200']);
+$author_avatar = get_avatar_url($author_ID, ['size' => '400']);
 $author_desc = get_the_author_meta('description');
 
 $authorPosts = get_posts([
