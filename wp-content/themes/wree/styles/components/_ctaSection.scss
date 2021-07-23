@@ -1,5 +1,5 @@
 .cta-section {
-    background: $tertiary;
+    background-color: $tertiary;
     padding: 2rem;
     h3 {
         color: $light;
@@ -56,9 +56,11 @@
                 color: rgba(255, 255, 255, .35);
             }
         }
-        input[type="button"] {
+        button,
+        input[type="button"],
+        input[type="submit"] {
             @extend .mailing-list-submit;
-            border: 1px solid $light;
+            border: 1px solid $light !important;
             height: unset;
         }
         .nf-field-container {
@@ -98,7 +100,7 @@
                 }
             }
             .nf-error-msg {
-                color: pink;
+                color: $pink;
                 font-size: .85rem;
                 position: absolute;
             }

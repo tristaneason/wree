@@ -398,3 +398,57 @@ section[id] {
 .w-200 {
     width: 200px;
 }
+
+// Ninja Forms
+.nf-form-cont {
+    .nf-form-layout {
+        .nf-before-form-content {
+            .nf-form-fields-required {
+                color: $medGrey;
+                font-size: .875rem;
+            }
+        }
+        .nf-form-content {
+            .nf-field-label {
+                label {
+                    font-family: $fontHeading;
+                    font-weight: 400;
+                }
+            }
+            button,
+            input[type="button"],
+            input[type="submit"] {
+                @extend .button;
+            }
+            .nf-error,
+            .nf-pass {
+                .ninja-forms-field {
+                    border-color: $pink !important;
+                }
+                .nf-field-element {
+                    &:after {
+                        background: transparent;
+                        color: $pink;
+                        font-size: 2rem;
+                        right: 0;
+                    }
+                }
+                .nf-error-msg {
+                    color: $pink;
+                    font-size: .85rem;
+                    position: absolute;
+                    right: 0;
+                }
+            }
+        }
+        .nf-after-form-content {
+            position: relative;
+            .nf-error-msg {
+                color: $danger;
+                font-size: .875rem;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}

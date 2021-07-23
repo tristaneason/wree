@@ -1,3 +1,14 @@
 #templateContact {
     padding: 3rem 0;
+    .nf-form-cont {
+        .nf-form-layout {
+            .nf-form-content {
+                button,
+                input[type="button"],
+                input[type="submit"] {
+                    line-height: 0;
+                }
+            }
+        }
+    }
 }
