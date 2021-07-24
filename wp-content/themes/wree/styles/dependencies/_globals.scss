@@ -436,8 +436,7 @@ section[id] {
                 .nf-error-msg {
                     color: $pink;
                     font-size: .85rem;
-                    position: absolute;
-                    right: 0;
+                    margin-top: -1.5rem;
                 }
             }
         }
