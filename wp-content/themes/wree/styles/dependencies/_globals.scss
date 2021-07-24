@@ -436,7 +436,8 @@ section[id] {
                 .nf-error-msg {
                     color: $pink;
                     font-size: .85rem;
-                    margin-top: -1.5rem;
+                    position: absolute;
+                    right: 0;
                 }
             }
         }
@@ -445,8 +446,7 @@ section[id] {
             .nf-error-msg {
                 color: $danger;
                 font-size: .875rem;
-                position: absolute;
-                right: 0;
+                margin-top: -1.5rem;
             }
         }
     }
