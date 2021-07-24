@@ -420,8 +420,7 @@ section[id] {
             input[type="submit"] {
                 @extend .button;
             }
-            .nf-error,
-            .nf-pass {
+            .nf-error {
                 .ninja-forms-field {
                     border-color: $pink !important;
                 }
@@ -435,6 +434,25 @@ section[id] {
                 }
                 .nf-error-msg {
                     color: $pink;
+                    font-size: .85rem;
+                    position: absolute;
+                    right: 0;
+                }
+            }
+            .nf-pass {
+                .ninja-forms-field {
+                    border-color: $success !important;
+                }
+                .nf-field-element {
+                    &:after {
+                        background: transparent;
+                        color: $success;
+                        font-size: 2rem;
+                        right: 0;
+                    }
+                }
+                .nf-error-msg {
+                    color: $success;
                     font-size: .85rem;
                     position: absolute;
                     right: 0;
