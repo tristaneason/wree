@@ -1211,3 +1211,42 @@ if ( ! function_exists( 'ssp_get_attachment_image_src' ) ) {
 		return $images_handler->get_attachment_image_src( $attachment_id, $size  );
 	}
 }
+
+
+/**
+ * Get the episode content for showing in the feed. Now Apple supports only p tags.
+ * This function removes iframes and shortcodes from the content and strips all tags except <p> and <a>
+ */
+if ( ! function_exists( 'ssp_get_the_feed_item_content' ) ) {
+	/**
+	 * @return string
+	 */
+	function ssp_get_the_feed_item_content() {
+		$content = get_the_content();
+		$blocks  = parse_blocks( $content );
+		if ( $blocks and is_array( $blocks ) ) {
+			$content = '';
+			$allowed_blocks = [
+				'core/paragraph',
+				'core/list',
+			];
+			foreach ( $blocks as $block ) {
+				if ( in_array( $block['blockName'], $allowed_blocks ) ) {
+					$content .= $block['innerHTML'];
+				}
+			}
+		} else {
+			$content = get_the_content_feed( 'rss2' );
+		}
+
+		$content = strip_shortcodes( $content );
+		$content = preg_replace( '/<\/?iframe(.|\s)*?>/', '', $content );
+		$content = str_replace( '<br>', PHP_EOL, $content );
+		$content = strip_tags( $content, '<p>,<a>,<ul>,<ol>,<li>' );
+
+		// Remove empty paragraphs as well.
+		$content = trim( str_replace( '<p></p>', '', $content ) );
+
+		return apply_filters( 'ssp_feed_item_content', $content, get_the_ID() );
+	}
+}

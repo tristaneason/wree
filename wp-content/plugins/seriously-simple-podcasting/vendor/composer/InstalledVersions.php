@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '87eb0c980fecacd391cc6f83e2e2978c7df8cb0d',
+    'reference' => '33304e9259308bff1c3a8244fc0c99e9ab14ba87',
     'name' => 'castos/seriously-simple-podcasting',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '87eb0c980fecacd391cc6f83e2e2978c7df8cb0d',
+      'reference' => '33304e9259308bff1c3a8244fc0c99e9ab14ba87',
     ),
   ),
 );

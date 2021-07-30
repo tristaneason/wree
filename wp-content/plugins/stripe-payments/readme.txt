@@ -3,9 +3,9 @@ Contributors: Tips and Tricks HQ, wptipsntricks, alexanderfoxc
 Donate link: https://s-plugins.com
 Tags: stripe, stripe payments, stripe gateway, payment, payments, button, shortcode, digital goods, payment gateway, instant payment, commerce, digital downloads, downloads, e-commerce, e-store, ecommerce, eshop, donation
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.0.46
+Stable tag: 2.0.47
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,12 @@ Yes, please visit Stripe Payments > Settings screen for options.
 None.
 
 == Changelog ==
+
+= 2.0.47 =
+- Fixed all-off coupons issue in Firefox when payment popup is integrated via link URL.
+- Added `{first_name}` and `{last_name}` email merge tags.
+- Addressed rare PHP warnings issue when debug mode is enabled.
+- More text messages can now be customized via Custom Messages add-on.
 
 = 2.0.46 =
 - Fixed a PHP syntax error in the payment popup template file.
