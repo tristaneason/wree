@@ -71,9 +71,7 @@ $article_tags = get_the_tags();
                 </div>
             </footer>
         </article>
-        <div class="">
-            <?php include theme_root('/components/sidebar.php'); ?>
-        </div>
+        <?php include theme_root('/components/sidebar.php'); ?>
     </section>
 </main>
 

@@ -65,7 +65,7 @@
     }
 
     .grid.two-thirds {
-        grid-template-columns: 65% auto;
+        grid-template-columns: 1fr;
         grid-column-gap: 1.5rem;
         grid-row-gap: 1.5rem;
     }
