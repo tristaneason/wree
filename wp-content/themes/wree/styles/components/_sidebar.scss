@@ -50,6 +50,10 @@
             }
         }
         &.about-section {
+            .logo {
+                margin: 0 auto;
+                width: 70%;
+            }
             p {
                 @media (min-width: $md) {
                     // text-align: justify;

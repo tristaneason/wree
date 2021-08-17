@@ -3,14 +3,14 @@
 
 $recentPosts = get_posts([
     'post_type' => 'post',
-    'posts_per_page' => '4',
+    'posts_per_page' => '6',
     'orderby' => 'date'
 ]);
 ?>
 
 <section id="componentRecentArticles">
     <div class="container">
-        <h2></h2>
+        <h2>Recent Articles by Our Contributors</h2>
         <div class="grid two-thirds">
             <div class="articles-list">
                 <?php foreach ($recentPosts as $recentPost): ?>

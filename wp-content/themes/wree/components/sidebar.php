@@ -46,6 +46,7 @@
         </a>
     </section>
     <section class="about-section border-1 p-1">
+        <?php include theme_root('/components/logo.php'); ?>
         <h3 class="mt-0">What We Do</h3>
         <?= get_field('what_we_do', 'option'); ?>
     </section>

@@ -19,7 +19,7 @@ $date_2 = date('F j, Y', strtotime($feat_2->post_date));
 
 <section id="featuredCards">
     <div class="container">
-        <h2 class="text-center mt-0">Read Our Latest Articles</h2>
+        <h2 class="text-center mt-0">Read Our Featured Articles</h2>
     </div>
     <div class="container grid halves">
         <div id="featuredPost1" class="card">
