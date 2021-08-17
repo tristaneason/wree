@@ -18,140 +18,127 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Inspiro_Typo_Headings_Config {
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'inspiro/customize_register', array( $this, 'register_configuration' ) );
-	}
-
-	/**
-	 * Register configurations
+	 * Configurations
+	 *
+	 * @since 1.4.0 Store configurations to class method.
 	 *
 	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
-	 * @return void
+	 * @return array
 	 */
-	public function register_configuration( $wp_customize ) {
-		$wp_customize->add_section(
-			'inspiro_typography_section_headings',
-			array(
-				'title' => __( 'Headings', 'inspiro' ),
-				'panel' => 'inspiro_typography_panel',
-			)
-		);
-
-		$wp_customize->add_setting(
-			'headings-font-family',
-			array(
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'sanitize_text_field',
-				'default'           => 'inherit',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Inspiro_Customize_Typography_Control(
-				$wp_customize,
-				'headings-font-family',
-				array(
-					'label'   => __( 'Font Family', 'inspiro' ),
-					'section' => 'inspiro_typography_section_headings',
-					'connect' => 'headings-font-weight',
-					'variant' => 'headings-font-variant',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'headings-font-variant',
-			array(
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'inspiro_sanitize_font_variant',
-				'default'           => '700',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Inspiro_Customize_Font_Variant_Control(
-				$wp_customize,
-				'headings-font-variant',
-				array(
-					'label'       => __( 'Variants', 'inspiro' ),
-					'description' => __( 'Only selected Font Variants will be loaded from Google Fonts.', 'inspiro' ),
-					'section'     => 'inspiro_typography_section_headings',
-					'connect'     => 'headings-font-family',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'headings-font-weight',
-			array(
-				'default'           => '700',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'inspiro_sanitize_font_weight',
-			)
-		);
-
-		$wp_customize->add_control(
-			'headings-font-weight',
-			array(
-				'label'   => __( 'Font Weight', 'inspiro' ),
-				'section' => 'inspiro_typography_section_headings',
-				'type'    => 'select',
-				'choices' => Inspiro_Font_Family_Manager::get_font_family_weight( 'headings-font-family', $wp_customize ),
-			)
-		);
-
-		$wp_customize->add_setting(
-			'headings-text-transform',
-			array(
-				'default'           => 'inherit',
-				'transport'         => 'refresh',
-				'sanitize_callback' => 'inspiro_sanitize_choices',
-			)
-		);
-
-		$wp_customize->add_control(
-			'headings-text-transform',
-			array(
-				'label'   => __( 'Text Transform', 'inspiro' ),
-				'section' => 'inspiro_typography_section_headings',
-				'type'    => 'select',
-				'choices' => array(
-					''           => _x( 'Inherit', 'text transform', 'inspiro' ),
-					'none'       => _x( 'None', 'text transform', 'inspiro' ),
-					'capitalize' => __( 'Capitalize', 'inspiro' ),
-					'uppercase'  => __( 'Uppercase', 'inspiro' ),
-					'lowercase'  => __( 'Lowercase', 'inspiro' ),
+	public static function config( $wp_customize ) {
+		return array(
+			'section' => array(
+				'id'   => 'inspiro_typography_section_headings',
+				'args' => array(
+					'title' => __( 'Headings', 'inspiro' ),
+					'panel' => 'inspiro_typography_panel',
 				),
-			)
-		);
-
-		$wp_customize->add_setting(
-			'headings-line-height',
-			array(
-				'default'           => 1.4,
-				'transport'         => 'refresh',
-				'sanitize_callback' => 'inspiro_sanitize_float',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Inspiro_Customize_Range_Control(
-				$wp_customize,
-				'headings-line-height',
+			),
+			'setting' => array(
 				array(
-					'label'       => __( 'Line Height', 'inspiro' ),
-					'section'     => 'inspiro_typography_section_headings',
-					'input_attrs' => array(
-						'min'  => 1,
-						'max'  => 2,
-						'step' => 0.1,
+					'id'   => 'headings-font-family',
+					'args' => array(
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'sanitize_text_field',
+						'default'           => 'inherit',
 					),
-				)
-			)
+				),
+				array(
+					'id'   => 'headings-font-variant',
+					'args' => array(
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_font_variant',
+						'default'           => '700',
+					),
+				),
+				array(
+					'id'   => 'headings-font-weight',
+					'args' => array(
+						'default'           => '700',
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_font_weight',
+					),
+				),
+				array(
+					'id'   => 'headings-text-transform',
+					'args' => array(
+						'default'           => 'inherit',
+						'transport'         => 'refresh',
+						'sanitize_callback' => 'inspiro_sanitize_choices',
+					),
+				),
+				array(
+					'id'   => 'headings-line-height',
+					'args' => array(
+						'default'           => 1.4,
+						'transport'         => 'refresh',
+						'sanitize_callback' => 'inspiro_sanitize_float',
+					),
+				),
+			),
+			'control' => array(
+				array(
+					'id'           => 'headings-font-family',
+					'control_type' => 'Inspiro_Customize_Typography_Control',
+					'args'         => array(
+						'label'   => __( 'Font Family', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'connect' => 'headings-font-weight',
+						'variant' => 'headings-font-variant',
+					),
+				),
+				array(
+					'id'           => 'headings-font-variant',
+					'control_type' => 'Inspiro_Customize_Font_Variant_Control',
+					'args'         => array(
+						'label'       => __( 'Variants', 'inspiro' ),
+						'description' => __( 'Only selected Font Variants will be loaded from Google Fonts.', 'inspiro' ),
+						'section'     => 'inspiro_typography_section_headings',
+						'connect'     => 'headings-font-family',
+					),
+				),
+				array(
+					'id'               => 'headings-font-weight',
+					'args'             => array(
+						'label'   => __( 'Font Weight', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'type'    => 'select',
+						'choices' => array(),
+					),
+					'callable_choices' => array(
+						array( 'Inspiro_Font_Family_Manager', 'get_font_family_weight' ),
+						array( 'headings-font-family', $wp_customize ),
+					),
+				),
+				array(
+					'id'   => 'headings-text-transform',
+					'args' => array(
+						'label'   => __( 'Text Transform', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'type'    => 'select',
+						'choices' => array(
+							''           => _x( 'Inherit', 'text transform', 'inspiro' ),
+							'none'       => _x( 'None', 'text transform', 'inspiro' ),
+							'capitalize' => __( 'Capitalize', 'inspiro' ),
+							'uppercase'  => __( 'Uppercase', 'inspiro' ),
+							'lowercase'  => __( 'Lowercase', 'inspiro' ),
+						),
+					),
+				),
+				array(
+					'id'           => 'headings-line-height',
+					'control_type' => 'Inspiro_Customize_Range_Control',
+					'args'         => array(
+						'label'       => __( 'Line Height', 'inspiro' ),
+						'section'     => 'inspiro_typography_section_headings',
+						'input_attrs' => array(
+							'min'  => 1,
+							'max'  => 2,
+							'step' => 0.1,
+						),
+					),
+				),
+			),
 		);
 	}
 }
-
-new Inspiro_Typo_Headings_Config();

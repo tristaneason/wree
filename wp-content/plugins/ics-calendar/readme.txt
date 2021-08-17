@@ -3,9 +3,9 @@ Contributors: room34
 Donate link: https://room34.com/payments
 Tags: calendar, iCal, ICS, iCalendar, Google Calendar, Outlook, Office 365, Mac calendar, iOS calendar, calendar feed, feed, embed calendar, event, events, booking, vacation, holiday, schedule, gig list, church calendar, Airbnb, rental, availability, sync
 Requires at least: 4.9
-Tested up to: 5.7.2
+Tested up to: 5.8
 Requires PHP: 7.0.0
-Stable tag: 7.7.2.1
+Stable tag: 7.8.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,16 @@ The paid [ICS Calendar Pro](https://icscalendar.com) add-on includes additional 
 == Screenshots ==
 
 == Changelog ==
+
+= 7.8.0.1 - 2021.08.10 =
+
+* Changed new `id` parameter to `guid` to avoid conflict with existing `id` parameter in ICS Calendar Pro.
+
+= 7.8.0 - 2021.08.10 =
+
+* Added `id` parameter to allow assignment of an arbitrary `id` attribute to a given calendar instead of the plugin's auto-generated GUID. *NOTES:* (1) The WordPress `sanitize_title()` function is automatically applied to the string.
+* Added missing `$ym` variable definition in `calendar-week.php` template. (2) As is standard for all HTML, the `id` value must be unique on the page!
+* Bumped "Tested up to" to 5.8.
 
 = 7.7.2.1 - 2021.06.24 =
 

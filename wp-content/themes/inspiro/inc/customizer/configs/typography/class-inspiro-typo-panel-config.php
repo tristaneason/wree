@@ -18,28 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Inspiro_Typo_Panel_Config {
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'inspiro/customize_register', array( $this, 'register_configuration' ) );
-	}
-
-	/**
-	 * Register configurations
+	 * Configurations
 	 *
-	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
-	 * @return void
+	 * @since 1.4.0 Store configurations to class method.
+	 * @return array
 	 */
-	public function register_configuration( $wp_customize ) {
-		$wp_customize->add_panel(
-			'inspiro_typography_panel',
-			array(
-				'priority'   => 40,
-				'capability' => 'edit_theme_options',
-				'title'      => esc_html__( 'Typography', 'inspiro' ),
-			)
+	public static function config() {
+		return array(
+			'panel' => array(
+				'id'   => 'inspiro_typography_panel',
+				'args' => array(
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
+					'title'      => esc_html__( 'Typography', 'inspiro' ),
+				),
+			),
 		);
 	}
 }
-
-new Inspiro_Typo_Panel_Config();

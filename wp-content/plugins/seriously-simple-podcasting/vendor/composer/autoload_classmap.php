@@ -51,6 +51,8 @@ return array(
     'SeriouslySimplePodcasting\\ShortCodes\\Podcast' => $baseDir . '/php/classes/shortcodes/class-podcast.php',
     'SeriouslySimplePodcasting\\ShortCodes\\Podcast_Episode' => $baseDir . '/php/classes/shortcodes/class-podcast-episode.php',
     'SeriouslySimplePodcasting\\ShortCodes\\Podcast_Playlist' => $baseDir . '/php/classes/shortcodes/class-podcast-playlist.php',
+    'SeriouslySimplePodcasting\\ShortCodes\\Shortcode' => $baseDir . '/php/classes/shortcodes/interface-shortcode.php',
+    'SeriouslySimplePodcasting\\Widgets\\Castos_Widget' => $baseDir . '/php/classes/widgets/class-castos-widget.php',
     'SeriouslySimplePodcasting\\Widgets\\Playlist' => $baseDir . '/php/classes/widgets/class-playlist.php',
     'SeriouslySimplePodcasting\\Widgets\\Recent_Episodes' => $baseDir . '/php/classes/widgets/class-recent-episodes.php',
     'SeriouslySimplePodcasting\\Widgets\\Series' => $baseDir . '/php/classes/widgets/class-series.php',

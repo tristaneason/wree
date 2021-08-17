@@ -18,29 +18,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Inspiro_Blog_Post_Panel_Config {
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'inspiro/customize_register', array( $this, 'register_configuration' ) );
-	}
-
-	/**
-	 * Register configurations
+	 * Configurations
 	 *
-	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
-	 * @return void
+	 * @since 1.4.0 Store configurations to class method.
+	 * @return array
 	 */
-	public function register_configuration( $wp_customize ) {
-		$wp_customize->add_panel(
-			'blog_post_options_panel',
-			array(
-				'priority'        => 51,
-				'capability'      => 'edit_theme_options',
-				'title'           => esc_html__( 'Blog Post Options', 'inspiro' ),
-				'active_callback' => 'inspiro_is_view_is_blog',
-			)
+	public static function config() {
+		return array(
+			'panel' => array(
+				'id'   => 'blog_post_options_panel',
+				'args' => array(
+					'priority'        => 51,
+					'capability'      => 'edit_theme_options',
+					'title'           => esc_html__( 'Blog Post Options', 'inspiro' ),
+					'active_callback' => 'inspiro_is_view_is_blog',
+				),
+			),
 		);
 	}
 }
-
-new Inspiro_Blog_Post_Panel_Config();

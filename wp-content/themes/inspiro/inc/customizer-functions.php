@@ -67,30 +67,6 @@ function inspiro_sanitize_header_button_url( $value ) {
 }
 
 /**
- * Callback for validating the header_textcolor value.
- *
- * Accepts 'blank', and otherwise uses sanitize_hex_color_no_hash().
- * Returns default text color if hex color is empty.
- *
- * @since 1.2.5
- *
- * @param string $color Color value.
- * @return mixed
- */
-function inspiro_sanitize_header_button_textcolor( $color ) {
-	if ( 'blank' === $color ) {
-		return 'blank';
-	}
-
-	$color = sanitize_hex_color_no_hash( $color );
-	if ( empty( $color ) ) {
-		$color = 'ffffff';
-	}
-
-	return $color;
-}
-
-/**
  * Sanitize boolean for checkbox.
  *
  * @since 1.2.5
@@ -129,6 +105,16 @@ function inspiro_is_view_is_single() {
 function inspiro_is_view_with_layout_option() {
 	// This option is available on all pages. It's also available on archives when there isn't a sidebar.
 	return ( is_front_page() || is_home() || is_single() );
+}
+
+/**
+ * Checks whether the external header video is eligible to show on the current page.
+ */
+function inspiro_is_external_video_active() {
+	$header_video_settings = get_header_video_settings();
+	// Get header video mimeType.
+	$mime_type = inspiro_get_prop( $header_video_settings, 'mimeType' );
+	return is_header_video_active() && 'video/mp4' !== $mime_type;
 }
 
 /**
@@ -205,40 +191,14 @@ function inspiro_sanitize_float( $value ) {
 }
 
 /**
- * Processes a json file and returns an array with its contents.
+ * Retrieves theme modification value.
  *
- * @param string $file_path Path to file.
- * @see gutenberg_experimental_global_styles_get_from_file()
- * @see wp_filesystem()
- * @see get_parent_theme_file_path()
+ * @since 1.4.0
+ *
+ * @param string $name Theme modification name.
+ * @return mixed
  */
-function inspiro_get_data_from_file( $file_path ) {
-	global $wp_filesystem;
-
-	require_once ABSPATH . '/wp-admin/includes/file.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-	WP_Filesystem();
-
-	$local_file = get_parent_theme_file_path( $file_path );
-	$content    = '';
-	$config     = array();
-
-	if ( $wp_filesystem->exists( $local_file ) ) {
-		$content = json_decode( $wp_filesystem->get_contents( $local_file ) );
-
-		$decoded_file = json_decode(
-			$content,
-			true
-		);
-
-		$json_decoding_error = json_last_error(); // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.json_last_errorFound
-		if ( JSON_ERROR_NONE !== $json_decoding_error ) { // phpcs:ignore PHPCompatibility.Constants.NewConstants.json_error_noneFound
-			return $config;
-		}
-
-		if ( is_array( $decoded_file ) ) {
-			$config = $decoded_file;
-		}
-	}
-
-	return $config;
+function inspiro_get_theme_mod( $name ) {
+	$default = Inspiro_Customizer::get_theme_mod_default_value( $name );
+	return get_theme_mod( $name, $default );
 }

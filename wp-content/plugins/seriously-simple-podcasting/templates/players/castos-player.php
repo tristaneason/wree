@@ -1,6 +1,9 @@
 <?php
 /**
+ * Is used for rendering both HTML player and Playlist player
+ *
  * @see \SeriouslySimplePodcasting\Controllers\Players_Controller::render_html_player();
+ * @see \SeriouslySimplePodcasting\Controllers\Players_Controller::render_playlist_player();
  *
  * @var array $album_art
  * @var string $player_mode
@@ -10,18 +13,17 @@
  * @var array $subscribe_links
  * @var string $episode_id
  * @var string $feed_url
- * @var string $episode_url
+ * @var string $current_url
  * @var string $embed_code
  * @var string $podcast_title
  * @var bool $show_subscribe_button
  * @var bool $show_share_button
+ * @var int $player_id
  **/
-
-$episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 
 ?>
 
-<div class="castos-player <?php echo $player_mode ?>-mode" data-episode="<?php echo $episode_id?>">
+<div class="castos-player <?php echo $player_mode ?>-mode" data-episode="<?php echo $episode_id ?>" data-player_id="<?php echo $player_id; ?>">
 	<div class="player">
 		<div class="player__main">
 			<div class="player__artwork player__artwork-<?php echo $episode_id?>">
@@ -29,40 +31,41 @@ $episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 			</div>
 			<div class="player__body">
 				<div class="currently-playing">
-					<div class="show">
-						<strong><?php echo $podcast_title ?></strong>
+					<div class="show player__podcast-title">
+						<?php echo $podcast_title ?>
 					</div>
-					<div class="episode-title"><?php echo $episode->post_title ?></div>
+					<div class="episode-title player__episode-title"><?php echo $episode->post_title ?></div>
 				</div>
 				<div class="play-progress">
 					<div class="play-pause-controls">
-						<button title="Play" class="play-btn play-btn-<?php echo $episode_id?>"><span class="screen-reader-text">Play Episode</span></button>
-						<button alt="Pause" class="pause-btn pause-btn-<?php echo $episode_id?> hide"><span class="screen-reader-text">Pause Episode</span></button>
-						<img src="<?php echo SSP_PLUGIN_URL ?>assets/css/images/player/images/icon-loader.svg" class="loader loader-<?php echo $episode_id ?> hide"/>
+						<button title="Play" class="play-btn"><span class="screen-reader-text">Play Episode</span></button>
+						<button title="Pause" class="pause-btn hide"><span class="screen-reader-text">Pause Episode</span></button>
+						<img src="<?php echo SSP_PLUGIN_URL ?>assets/css/images/player/images/icon-loader.svg" class="ssp-loader hide"/>
 					</div>
 					<div>
-						<audio preload="none" class="clip clip-<?php echo $episode_id?>">
-							<source loop preload="none" src="<?php echo $audio_file ?>">
+						<audio <?php if ( empty( $playlist ) ) : ?>loop<?php endif; ?> preload="none" class="clip clip-<?php echo $episode_id ?>">
+							<source src="<?php echo $audio_file ?>">
 						</audio>
-						<div class="ssp-progress progress-<?php echo $episode_id ?>" title="Seek">
-							<span class="progress__filled progress__filled-<?php echo $episode_id ?>"></span>
+						<div class="ssp-progress" title="Seek">
+							<span class="progress__filled"></span>
 						</div>
-						<div class="playback playback-<?php echo $episode_id ?>">
+						<div class="ssp-playback playback">
 							<div class="playback__controls">
-								<button class="player-btn__volume player-btn__volume-<?php echo $episode_id ?>" title="Mute/Unmute"><span class="screen-reader-text">Mute/Unmute Episode</span></button>
+								<button class="player-btn__volume" title="Mute/Unmute"><span class="screen-reader-text">Mute/Unmute Episode</span></button>
 								<button data-skip="-10" class="player-btn__rwd" title="Rewind 10 seconds"><span class="screen-reader-text">Rewind 10 Seconds</span></button>
-								<button data-speed="1" class="player-btn__speed player-btn__speed-<?php echo $episode_id ?>" title="Playback Speed">1x</button>
+								<button data-speed="1" class="player-btn__speed" title="Playback Speed">1x</button>
 								<button data-skip="30" class="player-btn__fwd" title="Fast Forward 30 seconds"><span class="screen-reader-text">Fast Forward 30 seconds</span></button>
 							</div>
 							<div class="playback__timers">
-								<time id="timer-<?php echo $episode_id ?>">00:00</time>
+								<time class="ssp-timer">00:00</time>
 								<span>/</span>
 								<!-- We need actual duration here from the server -->
-								<time id="duration-<?php echo $episode_id ?>"><?php echo $duration ?></time>
+								<time class="ssp-duration"><?php echo $duration ?></time>
 							</div>
 						</div>
 					</div>
 				</div>
+				<?php if ( $show_subscribe_button || $show_share_button ) : ?>
 				<nav class="player-panels-nav">
 					<?php if ( $show_subscribe_button ) : ?>
 						<button class="subscribe-btn" id="subscribe-btn-<?php echo $episode_id ?>" title="Subscribe"><?php _e( 'Subscribe', 'seriously-simple-podcasting' ) ?></button>
@@ -71,10 +74,13 @@ $episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 						<button class="share-btn" id="share-btn-<?php echo $episode_id ?>" title="Share"><?php _e( 'Share', 'seriously-simple-podcasting' ) ?></button>
 					<?php endif; ?>
 				</nav>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
+	<?php if ( $show_subscribe_button || $show_share_button ) : ?>
 	<div class="player-panels player-panels-<?php echo $episode_id ?>">
+		<?php if ( $show_subscribe_button ) : ?>
 		<div class="subscribe player-panel subscribe-<?php echo $episode_id ?>">
 			<div class="close-btn close-btn-<?php echo $episode_id ?>">
 				<span></span>
@@ -102,6 +108,8 @@ $episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 				</div>
 			</div>
 		</div>
+		<?php endif ?>
+		<?php if ( $show_share_button ) : ?>
 		<div class="share share-<?php echo $episode_id ?> player-panel">
 			<div class="close-btn close-btn-<?php echo $episode_id ?>">
 				<span></span>
@@ -131,7 +139,7 @@ $episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 					<?php _e( 'Link', 'seriously-simple-podcasting' ) ?>
 				</div>
 				<div>
-					<input value="<?php echo $episode_url ?>" class="input-link input-link-<?php echo $episode_id ?>"/>
+					<input value="<?php echo $current_url ?>" class="input-link input-link-<?php echo $episode_id ?>"/>
 				</div>
 				<button class="copy-link copy-link-<?php echo $episode_id ?>"></button>
 			</div>
@@ -146,5 +154,31 @@ $episode_id = $episode_id . '-' . substr(md5(microtime()), 0, 7)
 				<button class="copy-embed copy-embed-<?php echo $episode_id ?>"></button>
 			</div>
 		</div>
+		<?php endif ?>
 	</div>
+	<?php endif; ?>
+
+	<?php if ( ! empty( $playlist ) ) : ?>
+		<div class="playlist__wrapper" data-page="1">
+			<div class="loader"></div>
+			<ul class="playlist__items">
+				<?php foreach ( $playlist as $k => $item ) : ?>
+					<li class="playlist__item<?php if ( 0 === $k ): ?> active<?php endif ?>"
+						data-episode="<?php echo $item['episode_id']; ?>">
+						<div class="playlist__item__cover">
+							<img src="<?php echo $item['album_art']['src'] ?>" title="<?php echo $item['title']; ?>" alt="<?php echo $item['title'] ?>" />
+						</div>
+						<div class="playlist__item__details">
+							<h2 class="playlist__episode-title" data-podcast="<?php echo $item['podcast_title']; ?>"><?php echo $item['title'] ?></h2>
+							<p><?php echo $item['date'] . ' • ' . $item['duration']; ?></p>
+							<p class="playlist__episode-description"><?php echo $item['excerpt']; ?></p>
+						</div>
+						<audio preload="none" class="clip clip-<?php echo $item['episode_id'] ?>">
+							<source src="<?php echo $item['audio_file'] ?>">
+						</audio>
+					</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	<?php endif; ?>
 </div>

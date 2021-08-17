@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit970c6c82f9a2bd444f6a46f1ae550cbd
+class ComposerStaticInit008fbbf931a321a5a995525499653da2
 {
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -52,6 +52,8 @@ class ComposerStaticInit970c6c82f9a2bd444f6a46f1ae550cbd
         'SeriouslySimplePodcasting\\ShortCodes\\Podcast' => __DIR__ . '/../..' . '/php/classes/shortcodes/class-podcast.php',
         'SeriouslySimplePodcasting\\ShortCodes\\Podcast_Episode' => __DIR__ . '/../..' . '/php/classes/shortcodes/class-podcast-episode.php',
         'SeriouslySimplePodcasting\\ShortCodes\\Podcast_Playlist' => __DIR__ . '/../..' . '/php/classes/shortcodes/class-podcast-playlist.php',
+        'SeriouslySimplePodcasting\\ShortCodes\\Shortcode' => __DIR__ . '/../..' . '/php/classes/shortcodes/interface-shortcode.php',
+        'SeriouslySimplePodcasting\\Widgets\\Castos_Widget' => __DIR__ . '/../..' . '/php/classes/widgets/class-castos-widget.php',
         'SeriouslySimplePodcasting\\Widgets\\Playlist' => __DIR__ . '/../..' . '/php/classes/widgets/class-playlist.php',
         'SeriouslySimplePodcasting\\Widgets\\Recent_Episodes' => __DIR__ . '/../..' . '/php/classes/widgets/class-recent-episodes.php',
         'SeriouslySimplePodcasting\\Widgets\\Series' => __DIR__ . '/../..' . '/php/classes/widgets/class-series.php',
@@ -61,7 +63,7 @@ class ComposerStaticInit970c6c82f9a2bd444f6a46f1ae550cbd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit970c6c82f9a2bd444f6a46f1ae550cbd::$classMap;
+            $loader->classMap = ComposerStaticInit008fbbf931a321a5a995525499653da2::$classMap;
 
         }, null, ClassLoader::class);
     }

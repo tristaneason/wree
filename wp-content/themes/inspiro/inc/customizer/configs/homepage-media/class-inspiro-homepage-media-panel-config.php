@@ -18,29 +18,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Inspiro_Homepage_Media_Panel_Config {
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'inspiro/customize_register', array( $this, 'register_configuration' ) );
-	}
-
-	/**
-	 * Register configurations
+	 * Configurations
 	 *
-	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
-	 * @return void
+	 * @since 1.4.0 Store configurations to class method.
+	 * @return array
 	 */
-	public function register_configuration( $wp_customize ) {
-		$wp_customize->add_panel(
-			'homepage_media_panel',
-			array(
-				'capability'      => 'edit_theme_options',
-				'title'           => esc_html__( 'Homepage Media', 'inspiro' ),
-				'active_callback' => 'is_header_video_active',
-				'priority'        => 40,
-			)
+	public static function config() {
+		return array(
+			'panel' => array(
+				'id'   => 'homepage_media_panel',
+				'args' => array(
+					'capability'      => 'edit_theme_options',
+					'title'           => esc_html__( 'Homepage Media', 'inspiro' ),
+					'active_callback' => 'is_header_video_active',
+					'priority'        => 40,
+				),
+			),
 		);
 	}
 }
-
-new Inspiro_Homepage_Media_Panel_Config();

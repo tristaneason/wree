@@ -117,6 +117,7 @@ if (!empty($ics_data['colors'])) {
 				foreach (array_keys((array)$ics_data['events']) as $year) {
 					for ($m = 1; $m <= 12; $m++) {
 						$month = $m < 10 ? '0' . $m : '' . $m;
+						$ym = $year . $month;
 						$first_dow = $R34ICS->first_dow($m.'/1/'.$year);
 						if ($first_dow < $start_of_week) { $first_dow = $first_dow + 7; }
 						if (!isset($start_fill)) {

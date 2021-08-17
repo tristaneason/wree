@@ -18,38 +18,30 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Inspiro_Custom_Logo_Text_Config {
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'inspiro/customize_register', array( $this, 'register_configuration' ) );
-	}
-
-	/**
-	 * Register configurations
+	 * Configurations
 	 *
-	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
-	 * @return void
+	 * @since 1.4.0 Store configurations to class method.
+	 * @return array
 	 */
-	public function register_configuration( $wp_customize ) {
-		$wp_customize->add_setting(
-			'custom_logo_text',
-			array(
-				'default'           => get_bloginfo( 'name' ),
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'sanitize_text_field',
-			)
-		);
-
-		$wp_customize->add_control(
-			'custom_logo_text',
-			array(
-				'type'     => 'text',
-				'label'    => esc_html__( 'Custom Logo Text', 'inspiro' ),
-				'section'  => 'title_tagline',
-				'priority' => 5,
-			)
+	public static function config() {
+		return array(
+			'setting' => array(
+				'id'   => 'custom_logo_text',
+				'args' => array(
+					'default'           => get_bloginfo( 'name' ),
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+			),
+			'control' => array(
+				'id'   => 'custom_logo_text',
+				'args' => array(
+					'type'     => 'text',
+					'label'    => esc_html__( 'Custom Logo Text', 'inspiro' ),
+					'section'  => 'title_tagline',
+					'priority' => 5,
+				),
+			),
 		);
 	}
 }
-
-new Inspiro_Custom_Logo_Text_Config();

@@ -38,6 +38,12 @@ class Frontend_Controller extends Controller {
 	 */
 	public $episode_controller;
 
+
+	/**
+	 * @var Players_Controller
+	 * */
+	public $players_controller;
+
 	/**
 	 * Constructor
 	 *
@@ -47,7 +53,9 @@ class Frontend_Controller extends Controller {
 	public function __construct( $file, $version ) {
 		parent::__construct( $file, $version );
 		$this->episode_controller = new Episode_Controller( $file, $version );
+		$this->players_controller = new Players_Controller( $file, $version );
 		$this->register_hooks_and_filters();
+		$this->register_ajax_actions();
 	}
 
 	/**
@@ -105,7 +113,16 @@ class Frontend_Controller extends Controller {
 
 		// Handle localisation
 		add_action( 'plugins_loaded', array( $this, 'load_localisation' ) );
+	}
 
+	public function register_ajax_actions() {
+		add_action( 'wp_ajax_get_playlist_items', array( $this, 'get_ajax_playlist_items' ) );
+		add_action( 'wp_ajax_nopriv_get_playlist_items', array( $this, 'get_ajax_playlist_items' ) );
+	}
+
+	public function get_ajax_playlist_items() {
+		$items = $this->players_controller->get_ajax_playlist_items();
+		wp_send_json_success( $items );
 	}
 
 	/**
@@ -376,11 +393,11 @@ class Frontend_Controller extends Controller {
 			$player_size = 'standard';
 		}
 
-		$players_controller = new Players_Controller( $this->file, $this->version );
+
 		if ( 'standard' === $player_size ) {
-			$player = $players_controller->render_media_player( $episode_id );
+			$player = $this->players_controller->render_media_player( $episode_id );
 		} else {
-			$player = $players_controller->render_html_player( $episode_id );
+			$player = $this->players_controller->render_html_player( $episode_id );
 		}
 
 		// Allow filtering so that alternative players can be used
@@ -883,9 +900,9 @@ class Frontend_Controller extends Controller {
 			return;
 		}
 
-		$tag_archive_post_types = apply_filters( 'ssp_tag_archive_post_types', array('post', SSP_CPT_PODCAST) ) ;
-		$query->set( 'post_type', $tag_archive_post_types );
-
+		$post_types             = $query->get( 'post_type' );
+		$tag_archive_post_types = apply_filters( 'ssp_tag_archive_post_types', array( 'post', SSP_CPT_PODCAST ) );
+		$query->set( 'post_type', array_merge( $post_types, $tag_archive_post_types ) );
 	}
 
 	/**

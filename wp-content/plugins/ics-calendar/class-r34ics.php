@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) { exit; }
 
 class R34ICS {
 
-	public $version = '7.7.2.1';
+	public $version = '7.8.0.1';
 
 	public $colors = array(
 		'white' => '#ffffff',		// rgb(255,255,255)
@@ -46,6 +46,7 @@ class R34ICS {
 		'hidealldayindicator' => false,
 		'hiderecurrence' => null,
 		'hidetimes' => false,
+		'guid' => null,
 		'legendinline' => false,
 		'legendposition' => null,
 		'legendstyle' => null,
@@ -324,7 +325,7 @@ class R34ICS {
 			$ics_data['tz'] = !empty($tz) ? r34ics_space_pipe_explode($tz) : get_option('timezone_string');
 			
 			// Set general calendar information
-			$ics_data['guid'] = r34ics_guid();
+			$ics_data['guid'] = !empty($guid) ? $guid : r34ics_guid();
 			$ics_data['title'] = isset($title)
 				? (!r34ics_boolean_check($title) ? null : $title)
 				: null;
@@ -1029,6 +1030,7 @@ class R34ICS {
 			'hidealldayindicator' => r34ics_boolean_check($hidealldayindicator),
 			'hiderecurrence' => r34ics_hiderecurrence_parse($hiderecurrence),
 			'hidetimes' => r34ics_boolean_check($hidetimes),
+			'guid' => (!empty($guid) ? sanitize_title($guid) : null),
 			'legendinline' => false, // Deprecated
 			'legendposition' => (in_array($legendposition, array('above','below')) ? $legendposition : null),
 			'legendstyle' => (in_array($legendstyle, array('block','inline','none')) ? $legendstyle : (r34ics_boolean_check($legendinline) ? 'inline' : null)),
